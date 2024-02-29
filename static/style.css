@@ -4,3 +4,13 @@
     text-decoration: none;
     list-style: none;
 }
+
+#cards-cont {
+    display: flex;
+}
+.card {
+    border: 1px solid #3d3d3d;
+    border-radius: 8px;
+    display: flex;
+    overflow: hidden;
+}
