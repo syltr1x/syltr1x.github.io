@@ -5,12 +5,51 @@
     list-style: none;
 }
 
-#cards-cont {
+nav {
+    background-color: #3d3d3d;
     display: flex;
+    padding: 0.8rem;
+    justify-content: center;
 }
+
+ul > li {
+    display: inline;
+}
+
+li > a {
+    padding: 1.2rem;
+    color: aliceblue;
+}
+
 .card {
-    border: 1px solid #3d3d3d;
-    border-radius: 8px;
+    margin: 2rem;
+    max-width: 40rem;
+    justify-content: center;
+    align-items: center;
     display: flex;
-    overflow: hidden;
+    background-color: #333;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden; /* Para que el contenido no se salga de la tarjeta */
+}
+
+.card .image {
+    min-height: 100%;
+    max-width: 45%;
+    flex: 0 0 auto;
+}
+
+.card .image img {
+    border-radius: 2px;
+    min-height: 100%;
+    width: 100%;
+    display: block;
+    padding: 3px 3px;
+}
+
+.card .content {
+    padding: 6px 12px;
+}
+.card:hover .image {
+    box-shadow: #eee4 0px 0px 10px;
 }
