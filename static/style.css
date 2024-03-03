@@ -36,7 +36,7 @@ li > a {
     background-color: #333;
     border: 1px solid #ddd;
     border-radius: 5px;
-    overflow: hidden; /* Para que el contenido no se salga de la tarjeta */
+    overflow: hidden;
 }
 
 .card .image {
@@ -69,3 +69,46 @@ li > a {
 	color: #ddd;
 	font-family: 'Hack Nerd Font', monospace;
 }
+.card2 {
+    max-width: 15rem;
+    flex-direction: column;
+    color: #fff;
+    margin: 2rem;
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
+    background-color: #333;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.card2 .image {
+    max-width: 15rem;
+}
+.card2 .image img {
+    border-radius: 2px;
+    width: 100%;
+    display: block;
+}
+.card2 .content {
+    margin: 5px 2px;
+}
+.content > h3{
+    text-decoration: underline;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  th {
+    text-decoration: underline;
+  }
+  tr:nth-child(even) {
+    background-color: #232323;
+  }
