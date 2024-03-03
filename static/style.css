@@ -4,6 +4,9 @@
     text-decoration: none;
     list-style: none;
 }
+body {
+	background-color: #111;
+}
 
 nav {
     background-color: #3d3d3d;
@@ -22,6 +25,7 @@ li > a {
 }
 
 .card {
+	color: #fff;
     margin: 2rem;
     max-width: 40rem;
     justify-content: center;
@@ -48,8 +52,9 @@ li > a {
 }
 
 .card .content {
+	color: #fff;
     padding: 6px 12px;
 }
 .card:hover .image {
-    box-shadow: #eee4 0px 0px 10px;
+    box-shadow: #eeea 0px 0px 10px;
 }

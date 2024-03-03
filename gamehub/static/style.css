@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    list-style: none;
+    text-decoration: none;
+    color: #eee;
+}
+
+form {
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form > * {
+    border: none;
+    outline: none;
+    border-radius: 0.4rem;
+    padding: 0.4rem;
+    margin-right: 0.6rem;
+}
+
+form > input:focus {
+    border-bottom: #0c497e 2px solid;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0.7rem 4px;
+    padding: 0.6rem;
+    font-size: 1.1rem;
+    border-radius: 1.1rem;
+}
+
+.item > img {
+    margin-right: 0.3rem;
+    height: 1.4rem;
+    border-radius: 50%;
+}
+#name {
+    justify-content: left;
+    text-align: left;
+}
+
+#price {
+    text-align: right;
+}
+
+.xbox {
+    background-color: rgb(9, 163, 10);
+}
+
+.steam {
+    background-color: #0c497e; 
+}

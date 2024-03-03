@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/style.css">
+    <title>Home | Game Hub</title>
+</head>
+<body>
+    <form action="{{ url_for('search') }}" method="post">
+        <select name="system">
+            <option value="WINDOWS">Windows</option>
+            <option value="MAC">Mac OS</option>
+        </select>
+        <select name="currency">
+            <option value="ARS">ARS</option>
+            <option value="USD">USD</option>
+            <option value="GBP">GBP</option>
+            <option value="AUD">AUD</option>
+        </select>
+        <input type="text" name="query" placeholder="Ingresa tu búsqueda">
+        <button type="submit">Buscar</button>
+    </form>
+    <ul>
+    {% for item in data %}
+        <a href='{{ item["url"] }}' target="_blank"><div class='item result 
+        {% if "xbox" in item["platform"].lower() %}
+            xbox
+        {% elif "windows" in item["platform"].lower() %}
+            windows
+        {% elif "steam" in item["platform"].lower() %}
+            steam
+        {% endif %}'>
+            {% if 'xbox' in item["platform"].lower() %}
+                <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fpluspng.com%2Fimg-png%2Fxbox-hd-png-accepted-artwork-1024.png&f=1&nofb=1&ipt=6982e6308424d4c56349ace4034996959a4a97cf3a2ad0a37c720fd6038ba130&ipo=images">
+            {% elif 'pc' in item["platform"].lower() %}
+                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwebstockreview.net%2Fimages%2Fpng-to-icon-windows-10.png&f=1&nofb=1&ipt=59163fc35a279c5987d80fef6be980f1ace6c141259ff8b8edc9e0ca412f3bd7&ipo=images">
+            {% elif 'steam' in item["platform"].lower() %}
+                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.thepaperlab.it%2Fwp-content%2Fuploads%2Fsites%2F4%2F2019%2F10%2F1200px-steam_icon_logo.svg_.png&f=1&nofb=1&ipt=466ed630347f1d10f84275262279098bb29ff07152b9b43b040d1f9447db9b73&ipo=images">
+            {% else %}
+                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwebstockreview.net%2Fimages%2Fpng-to-icon-windows-10.png&f=1&nofb=1&ipt=59163fc35a279c5987d80fef6be980f1ace6c141259ff8b8edc9e0ca412f3bd7&ipo=images">
+            {% endif %}
+            <p id="name"> {{ item["name"] }}</p>
+            <p id="price"> $ {{ item["price"] }}</p>
+        </div></a>
+    {% endfor %}
+    </ul>
+</body>
+</html>

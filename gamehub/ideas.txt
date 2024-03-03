@@ -1,0 +1,5 @@
+ bcdedit /set {bootmgr} path \EFI\ubuntu\grubx64.efi
+manager de cositas windows
+boot, key, office, bla bla
+
+linux things: kitty.conf, programs, soluciones BLA BLA
