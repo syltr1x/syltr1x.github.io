@@ -40,14 +40,12 @@ li > a {
 }
 
 .card .image {
-    min-height: 100%;
     max-width: 45%;
     flex: 0 0 auto;
 }
 
 .card .image img {
     border-radius: 2px;
-    min-height: 100%;
     width: 100%;
     display: block;
     padding: 3px 3px;
