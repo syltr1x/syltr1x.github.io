@@ -100,15 +100,49 @@ table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
-  }
-  td, th {
+}
+td, th {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
-  }
-  th {
+}
+th {
     text-decoration: underline;
-  }
-  tr:nth-child(even) {
+}
+tr:nth-child(even) {
     background-color: #232323;
-  }
+}
+#abcard {
+    flex-direction: row;
+    color: #fff;
+    margin: 2rem;
+    display: inline-flex;
+    background-color: #333;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+#abcard .image {
+    margin: 8px;
+    max-width: 8rem;
+}
+#abcard .image img {
+    border-radius: 2px;
+    width: 100%;
+    display: block;
+}
+#abcard .content {
+    display: flex;
+    flex-direction: column;
+    align-items: top;
+    justify-content: top;
+    text-align: top;
+    margin: 5px 2px;
+}
+#abcard #about {
+    display: block;
+    padding: 6px;
+}
+#about > h4 {
+    text-decoration: underline2;
+}
