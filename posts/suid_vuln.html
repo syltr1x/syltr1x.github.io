@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows keys | Syltr1x Page</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/main.js"></script>
+</head>
+<body>
+    <nav><ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/posts/">Blog</a></li>
+    </ul></nav>
+	<h2>Vengo a contarles de un "script" que hice para que pueda comprobar si tienen binarios que se puedan usar para un bypass (quizas una escalada de privilegios)0.0</h2>
+	<h4>La lista de binarios que son vulnerables a SUID (y más) se puedene encontrar en <a href="gtfobins.github.io">gtfobins.github.io</a></h4>
+	<h4>Basicamente limpie la lista e hice un script que en base a esa lista verifica la existencia de estos binarios en su equipo:</h4>
+	<div class"code-section">
+		<p>opt=()</p>
+		<p>while IFS=read -r line; do</p>
+		<p>    opt+=("$(basename "$line")")</p>	
+		<p>done &lt &lt(find / -perm -4000 2>/dev/null)</p>
+		<p>while IFS=red -r line; do</p>
+		<p>    filter=$(echo "$line" | cut -d ' ' -f 1)</p>
+		<p>    line=$(echo "$line" | sed 's/[[:space:]]*$//')</p>
+		<p>    for elemento in "${opt[@]}"; do</p>
+		<p>        if [[ "$elemento" == "$filter" ]]</p>
+		<p>            echo "$line"</p>
+		<p>        fi</p>
+		<p>    done</p>
+		<p>done &lt &lt(curl -sS https://raw.githubusercontent.com/syltr1x/mythings/main/sudo_gtfo_bins)</p>
+	</div>
+	<h4>Una cantidad de lineas que harian que a muchos les salgan ampollas en los dedos de tanta escritura, para esas almas en pena, hice esto. De nada :)</h4>
+	<br>
+	<h4>En caso de que tengan un problema mas grave, tambien los tengo cubiertos: solo tendras que copiar y pegar (dudo que sepas escribir) lo siguiente:</h4>
+	<div class="code-section">
+		<p>curl -sS https://raw.githubusercontent.com/syltr1x/mythings/main/suidscanner.sh | sh</p>
+	</div>
+	<h4>Si no puedes hacer eso porfavor cierra esta pagina y acude a un medico.</h4>
+</body>
+</html>
