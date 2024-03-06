@@ -25,7 +25,10 @@ ul > li {
 
 li > a {
     padding: 1.2rem;
-    color: aliceblue;
+    color: #7d7d7d;
+}
+li > a.active {
+	color: #fff
 }
 /* Projects Styles*/
 .card {
