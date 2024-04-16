@@ -144,15 +144,23 @@ th {
 tr:nth-child(even) {
     background-color: #232323;
 }
-.backcontent {
-    display: flex;
-    flex-direction: column;
+#acadb {
     background: linear-gradient(
         to right,
         rgba(80, 80, 80, 0.87),
         rgba(0, 0, 0, 0.87)
-      ), 
-      url("/static/img/acad24.png");
+      ),url('/static/img/acad24.png');
+}
+#officeb {
+    background: linear-gradient(
+        to right,
+        rgba(80, 80, 80, 0.87),
+        rgba(0, 0, 0, 0.87)
+      ),url('/static/img/office365.png');
+}
+.backcontent {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 8px;
