@@ -158,7 +158,7 @@ tr:nth-child(even) {
         to right,
         rgba(80, 80, 80, 0.87),
         rgba(0, 0, 0, 0.87)
-      ),url('/static/img/acad18.jpg');
+      ),url('/static/img/acad18.png');
       background-size: cover;
 }
 #officeb {
