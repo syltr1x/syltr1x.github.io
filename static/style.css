@@ -13,19 +13,20 @@ body {
 }
 
 nav {
-    background-color: #3d3d3d;
+    background-color: #191919;
     display: flex;
     padding: 0.8rem;
     justify-content: center;
+    box-shadow: 0 0 1.3rem #eee3;
 }
 
-ul > li {
+nav > ul > li {
     display: inline;
 }
 
 li > a {
     padding: 1.2rem;
-    color: #7d7d7d;
+    color: #888;
 }
 li > a.active {
 	color: #fff
@@ -144,12 +145,21 @@ th {
 tr:nth-child(even) {
     background-color: #232323;
 }
-#acadb {
+#acad1 {
     background: linear-gradient(
         to right,
         rgba(80, 80, 80, 0.87),
         rgba(0, 0, 0, 0.87)
       ),url('/static/img/acad24.png');
+      background-size: cover;
+}
+#acad2{
+    background: linear-gradient(
+        to right,
+        rgba(80, 80, 80, 0.87),
+        rgba(0, 0, 0, 0.87)
+      ),url('/static/img/acad18.jpg');
+      background-size: cover;
 }
 #officeb {
     background: linear-gradient(
@@ -157,6 +167,7 @@ tr:nth-child(even) {
         rgba(80, 80, 80, 0.87),
         rgba(0, 0, 0, 0.87)
       ),url('/static/img/office365.png');
+      background-size: contain;
 }
 .backcontent {
     display: flex;
@@ -164,7 +175,6 @@ tr:nth-child(even) {
     justify-content: center;
     align-items: center;
     border-radius: 8px;
-    background-size:cover;
     padding: 2rem;
     margin: 4rem auto;
     width: 70%;
