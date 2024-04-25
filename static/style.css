@@ -87,6 +87,7 @@ li > a.active {
 .card2 {
     margin: 1.5rem 0 1.5rem 0;
     max-width: 15rem;
+    height: 350px;
     flex-direction: column;
     color: #fff;
     justify-content: center;
@@ -116,6 +117,7 @@ li > a.active {
     }
    }
 .card2 .image {
+    flex: 1;
     max-width: 15rem;
 }
 .card2 .image img {
@@ -132,7 +134,8 @@ li > a.active {
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 100%;
+    width: 80%;
+    margin: 2rem 10%;
 }
 td, th {
     border: 1px solid #dddddd;
@@ -151,7 +154,7 @@ tr:nth-child(even) {
         rgba(80, 80, 80, 0.87),
         rgba(0, 0, 0, 0.87)
       ),url('/static/img/acad24.png');
-      background-size: cover;
+    background-size: cover;
 }
 #acad2{
     background: linear-gradient(
@@ -159,7 +162,7 @@ tr:nth-child(even) {
         rgba(80, 80, 80, 0.87),
         rgba(0, 0, 0, 0.87)
       ),url('/static/img/acad18.png');
-      background-size: cover;
+    background-size: cover;
 }
 #officeb {
     background: linear-gradient(
@@ -167,7 +170,7 @@ tr:nth-child(even) {
         rgba(80, 80, 80, 0.87),
         rgba(0, 0, 0, 0.87)
       ),url('/static/img/office365.png');
-      background-size: contain;
+    background-size: cover;
 }
 .backcontent {
     display: flex;
