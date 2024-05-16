@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binarios & Scripts | Syltr1x Page</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/main.js"></script>
+</head>
+<body>
+    <nav><ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/posts/">Blog</a></li>
+    </ul></nav>
+    <table>
+        <tr>
+            <th>Modificaciones de Registro</th>
+            <th>Tipo</th>
+            <th>Valor</th>
+        </tr>
+        <tr>
+            <td>Equipo\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Search\BingSearchEnabled</td>
+            <td>DWORD (32)</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>Equipo\HKEY_LOCAL_MACHINE\SYSTEM\Setup\MoSetup\AllowUpgradesWithUnsupportedTPMOrCPU</td>
+            <td>DWORD (32)</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>Equipo\HKEY_LOCAL_MACHINE\SYSTEM\Setup\LabConfig\BypassSecureBootCheck</td>
+            <td>DWORD (32)</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>Equipo\HKEY_LOCAL_MACHINE\SYSTEM\Setup\LabConfig\BypassTPMCheck</td>
+            <td>DWORD (32)</td>
+            <td>1</td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <th>Comandos Powershell</th>
+            <th>Interprete de Comandos</th>
+        </tr>
+        <tr>
+            <td>iwr -useb https://raw.githubusercontent.com/Sycnex/Windows10Debloater/master/Windows10Debloater.ps1 | iex</td>
+            <td>Powershell (admin)</td>
+        </tr>
+        <tr>
+            <td>iwr -useb https://raw.githubusercontent.com/spicetify/spicetify-cli/master/install.ps1 | iex</td>
+            <td>Powershell</td>
+        </tr>
+        <tr>
+            <td>iwr -useb https://raw.githubusercontent.com/syltr1x/mythings/main/activate.ps1 | iex</td>
+            <td>CMD / Powershell</td>
+        </tr>
+        <tr>
+            <td>bcdedit /set {bootmgr} path \EFI\ubuntu\grubx64.efi</td>
+            <td>CMD</td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <th>Programa / Aplicacion</th>
+            <th>Enlace</th>
+        </tr>
+        <tr>
+            <td>Rufus / Herramientas de Microsoft</td>
+            <td><a target="_blank" href="https://rufus.ie/es/">rufus.ie/es/</a></td>
+        </tr>
+        <tr>
+            <td>Balena Etcher</td>
+            <td><a target="_blank" href="https://etcher.balena.io/#download-etcher">etcher.balena.io/</a></td>
+        </tr>
+        <tr>
+            <td>MiniTool Partition Wizard</td>
+            <td><a target="_blank" href="https://www.partitionwizard.com/">partitionwizard.com/</a></td>
+        </tr>
+        <tr>
+            <td>x64dbg</td>
+            <td><a target="_blank" href="https://x64dbg.com/">x64dbg.com/</a></td>
+        </tr>
+        <tr>
+            <td>AutoHotkey</td>
+            <td><a target="_blank" href="https://www.autohotkey.com/">autohotkey.com/</a></td>
+        </tr>
+    </table>
+</body>
+</html>
