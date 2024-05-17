@@ -209,6 +209,22 @@ tr:nth-child(even) {
     background-color: #593d45;
     box-shadow: #eee4 0 0 20px;
 }
+.indexbtn {
+    outline: none;
+    border: none;
+    background: none;
+    color: #ddd;
+}
+.indexbtn:hover {
+    text-decoration: underline;
+}
+@keyframes remark {
+    10% {background-color:#232323;}
+    20% {background-color: #898989;} 
+    60% {background-color: #898989;} 
+    90% {background-color:#232323;}
+}
+
 /* About Styles*/
 #abcard {
     flex-direction: row;
