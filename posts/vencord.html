@@ -6,6 +6,9 @@
     <title>Windows keys | Syltr1x Page</title>
     <link rel="stylesheet" href="/static/style.css">
     <script src="/static/main.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/atom-one-dark.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
 </head>
 <body>
     <nav><ul>
@@ -22,12 +25,10 @@
 	<img src="/static/img/vencord_install.png">
 	<h4>En caso de que no detecte la instalación de discord puedes ingresar el path manualmente</h4>
 	<img src="/static/img/vencord_path.png">
-	<h4>Si no conoces la ruta de instalación de discord puedes averiguarlo ejecutando lo siguiente en powershell</h4>
-	<div class="code-section">
-		<p>$discordPath = (Get-ItemProperty -Path "Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Uninstall\" | Where-Object { $_.DisplayName -like "*Discord" }).UninstallString</p>
-		<p>$discordPath = $discordPath.Split(" ")</p>
-		<p>$discordPath = $discordPath[0]</p>
-		<p>$discordPath = $discordPath.Substring(0, $discordPath.Length - 11)</p>
-	</div>
+	<h4>Si no conoces la ruta de instalación de discord puedes averiguarlo ejecutando lo siguiente en powershell:</h4>
+	<pre class="code-section"><code class="ps1">$discordPath = (Get-ItemProperty -Path "Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Uninstall\" | Where-Object { $_.DisplayName -like "*Discord" }).UninstallString
+$discordPath = $discordPath.Split(" ")
+$discordPath = $discordPath[0]
+$discordPath = $discordPath.Substring(0, $discordPath.Length - 11)</code></pre>
 </body>
 </hmtl>

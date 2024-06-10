@@ -71,15 +71,12 @@ li > a.active {
 
 /* Blog Styles */
 .code-section {
-	margin: 0 2rem 1rem 2rem;
-	padding:0.3rem;
+	margin: 1.5rem 1rem;
 	overflow: hidden;
-	border: 1px solid #aaa;
 	border-radius: 0.4rem;
-	background-color: #1c1c1c;
-	color: #ddd;
-	font-family: monospace;
 	font-size: 15px;
+    white-space: pre;
+	tab-size: 8;
 }
 .container {
     display: grid;
@@ -252,7 +249,7 @@ tr:nth-child(even) {
     gap: 1rem;
 }
 .abcard {
-    border: 2px red solid;
+    margin: 1.5rem 1rem;
     flex-direction: row;
     color: #fff;
     display: flex;
@@ -262,15 +259,15 @@ tr:nth-child(even) {
     transition: all 0.2s;
 }
 .abcard .image {
+    filter: grayscale(100%);
     margin: 8px;
     max-width: 8rem;
+    transition: all 0.2s;
 }
 .abcard .image img {
-    filter: grayscale(100%);
-    transition: all 0.2s;
-    border-radius: 50%;
+    border-radius: 2px;
     width: 100%;
-    display: flex;
+    display: block;
 }
 #about-card > .content > h2 {
     width:min-content;
@@ -299,6 +296,6 @@ tr:nth-child(even) {
 #about > p {
     font-size: 14px;
 }
-.abcard:hover > .image > img {
+.abcard:hover > .image {
     filter: grayscale(0%);
 }
