@@ -40,3 +40,31 @@ li > a.active {
     white-space: pre;
 	tab-size: 8;
 }
+.img_card {
+    margin: 1.2rem;
+    width: max-content;
+    overflow: hidden;
+    border-radius: 0.4rem;
+    position: relative;
+}
+
+.img_card > .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(80, 80, 80, 0.87);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    transition: all .4s;
+    transform: translateY(100%);
+    box-sizing: border-box;
+}
+
+.img_card:hover .container {
+    transform: translateY(0);
+}
+
+.img_card img {
+    display: block;
+}
