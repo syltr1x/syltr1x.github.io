@@ -6,6 +6,9 @@
     <title>GameHub | Syltr1x Page</title>
     <link rel="stylesheet" href="/static/style.css">
     <script src="/static/main.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/atom-one-dark.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
 </head>
 <body>
     <nav><ul>
@@ -16,18 +19,14 @@
     </ul></nav>
 	<h2>GameHub es una plataforma que reune precios de juegos obteniendo datos de paginas como steam, epic games, eneba, etc</h2>
 	<p>Windows:</p>
-	<div class="code-section">
-		<p>iwr -useb https://raw.githubusercontent.com/syltr1x/syltr1x.github.io/main/gamehub/installer.ps1 | iex</p>
-		<p>cd gamehub</p>
-		<p>py -m pip install requirements.txt</p>
-		<p>py app.py</p>
-	</div>
+	<pre class="code-section"><code class="ps1">iwr -useb https://raw.githubusercontent.com/syltr1x/syltr1x.github.io/main/gamehub/installer.ps1 | iex
+cd gamehub
+py -m pip install requirements.txt
+py app.py</code></pre>
 	<p>Linux/Mac OS:</p>
-	<div class="code-section">
-		<p>curl -fsSL https://raw.githubusercontent.com/syltr1x/syltr1x.github.io/main/gamehub/installer.sh | sh</p>
-		<p>cd gamehub</p>
-		<p>python3 -m pip install requirements.txt</p>
-		<p>python3 app.py</p>
-	</div>
+	<pre class="code-section"><code class="zsh">curl -fsSL https://raw.githubusercontent.com/syltr1x/syltr1x.github.io/main/gamehub/installer.sh | sh
+cd gamehub
+python3 -m pip install requirements.txt
+python3 app.py</code></pre>
 </body>
 </html>
