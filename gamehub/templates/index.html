@@ -7,6 +7,7 @@
     <style>
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
 * {
+    background-color: #000;
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif;
@@ -16,6 +17,7 @@
 }
 
 form {
+    background-color: #000;
     margin: 1rem;
     display: flex;
     justify-content: center;
@@ -50,22 +52,27 @@ form > input:focus {
     border-radius: 50%;
 }
 #name {
+    background-color: #0000;
     justify-content: left;
     text-align: left;
 }
 
 #price {
+    background-color: #0000;
     text-align: right;
 }
 
 .xbox {
-    background-color: rgb(9, 163, 10);
+    background-color: #09a30a;
 }
-
 .steam {
     background-color: #0c497e; 
 }
-    </style>
+.mstore {
+    background-color: #fff;
+    color: #111;
+}
+</style>
 </head>
 <body>
     <form action="{{ url_for('search') }}" method="post">
@@ -83,6 +90,7 @@ form > input:focus {
         <button type="submit">Buscar</button>
     </form>
     <ul>
+    <p>{{ items }}</p>
     {% for item in data %}
         <a href='{{ item["url"] }}' target="_blank"><div class='item result 
         {% if "xbox" in item["platform"].lower() %}
@@ -91,6 +99,8 @@ form > input:focus {
             windows
         {% elif "steam" in item["platform"].lower() %}
             steam
+        {% elif "mstore" in item["platform"].lower() %}
+            mstore
         {% endif %}'>
             {% if 'xbox' in item["platform"].lower() %}
                 <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fpluspng.com%2Fimg-png%2Fxbox-hd-png-accepted-artwork-1024.png&f=1&nofb=1&ipt=6982e6308424d4c56349ace4034996959a4a97cf3a2ad0a37c720fd6038ba130&ipo=images">
