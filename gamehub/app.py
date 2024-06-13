@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html', data=[])
+    return render_template('index.html', data=[], items=0)
 
 @app.route('/search', methods=['POST'])
 def search():
@@ -14,7 +14,7 @@ def search():
     system = request.form.get('system')
     # Llama a tu función de web scraping con el parámetro de búsqueda
     data = scrap(query, currency, system)
-    return render_template('index.html', data=data, curr=currency)
+    return render_template('index.html', data=data, items=len(data))
 
 if __name__ == '__main__':
     app.run(debug=True)
