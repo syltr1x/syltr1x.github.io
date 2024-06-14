@@ -3,6 +3,7 @@ from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.firefox.options import Options
 from bs4 import BeautifulSoup as bs
 import requests as r
+import re
 
 def scrap(query, currency, os):
     # Constantes de webs con cargado dinamico
@@ -42,33 +43,34 @@ def scrap(query, currency, os):
     # Procesa la lista de todos los proveedores juntos
     for i in results:
         i = i.split('_|_')
-        url = i[1]
-        i = i[0]
-        if 'steam' in i: platform = 'steam'; i=i[:-5]
-        elif 'epic' in i: platform = 'epic'; i=i[:-4]
-        elif 'mstore' in i: platform = 'mstore'; i=i[:-6]
-        elif 'xbox' in i: platform = 'xbox'
+        name = i[0]
+        price = i[1].replace("$","")
+        url = i[2]
+        # Steam Price Filter
+        if 'steam' in name: 
+            platform = 'steam'
+            name=name[:-5].replace('\n','')
+            price = float(price)*float(dolar[1:])
+            price = f"{float(price):,.2f}"
+        # Microsoft Store Price Filter
+        elif 'mstore' in name:
+            platform = 'mstore'
+            name=name[:-6]
+            match = re.search(r'\d{1,3}(?:[.,]\d{3})*(?:[.,]\d{2})?', price)
+            if match: price = match.group(0)
+            else: price = None
+            price = re.sub(r'(?<=\d).(?=\d{3}(?:[.,]|$))', '', price)
+
+        elif 'xbox' in name: platform = 'xbox'
         else: platform = 'pc'
-       
-        name = ' '.join(i.split(' '))
-        if currency in i: price = i.split(currency)
-        elif '$' in i: price = i.split('$')
-        elif platform == 'epic': price = i.split('|')[1].split(' ')[0]
-        if platform == 'mstore': price = i.split('_|_')[-1]
-        else: price = price[len(price)-1]
 
-        if len(price) > 2:
-            if platform == "mstore":
-                if price.count("$") > 1: price = price.split("ahora")[1]
-                else: 
-                    char = price[price.index(',')+2]
-                    price = price.split(char)[0]+char
-                price = price.replace(',','[_]').replace('.',',').replace('[_]','.')
-            else: price = price.split('.')[0]+'.'+price.split('.')[1][:2]
-
-            if platform == 'steam':
-                price = str(float(price)*float(dolar[1:]))
-                price = price.split('.')[0]+'.'+price.split('.')[1][:2]
-                price = "{:,.2f}".format(float(price))
-            lista.append({"name":name, "price":price.strip(), "platform":platform, "url":url})
+        # Eneba Price filter
+        if platform == "pc" or platform == "xbox":
+            price = price.split(currency)[1].strip()
+        
+        # General Price Format
+        price = re.sub(r'(?<=\d),(?=\d{3}(?:[.,]|$))', '', price)
+        price = price.replace(',', '.')
+        price = f"{float(price):,.2f}"
+        lista.append({"name":name, "price":price.strip(), "platform":platform, "url":url})
     return lista
