@@ -11,28 +11,30 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
 	<script>hljs.highlightAll();</script>
 </head>
-<body>
-    <nav><ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/about/">About</a></li>
-        <li><a href="/projects/">Projects</a></li>
-        <li><a href="/posts/">Blog</a></li>
-    </ul></nav>
-	<h2>A continuacion encontraras una guía de los comandos que YO he utilizado para instalar spotify (y spicetify) en mi Arch Linux, No tiene demasiada ciencia pero me han surgido probleamas de spicetify por permisos que he logrado solucionar de forma sencilla y lo vengo a compartir</h2><br><br>
-	<h4>Primero instalamos Spotify desde un repositorio de git:</h4>
-	<pre class="code-section"><code class="zsh">git clone https://aur.archlinux.org/spotify.git
+<body class="content-body">
+	<nav><ul>
+		<li><a href="/">Home</a></li>
+		<li><a href="/about/">About</a></li>
+		<li><a href="/projects/">Projects</a></li>
+		<li><a href="/posts/">Blog</a></li>
+	</ul></nav>
+	<div class="content-post">
+		<h3>Una guía de los comandos que yo he utilizado para instalar spotify (y spicetify) en mi Arch Linux</h3>
+		<br><br>
+		<h4>Primero instalamos Spotify desde un AUR:</h4>
+		<pre class="code-section"><code class="zsh">git clone https://aur.archlinux.org/spotify.git
 cd spotify
 makepkg -si
 chmod +x spotify.sh && ./spotify.sh</code></pre>
-	<h4>Con eso basta para la instalacion de spotify, ya puedes iniciar sesion y escuchar tu musica.</h4>
-	<h4>Pero si el viejo spotify no cumple tus necesidades de ser cool, puedes ponerle un poco de sazon (SPICEtify):</h4>
-	<pre class="code-section"><code class="zsh">chmod a+rw /opt/spotify/Apps
+		<h4>Si el viejo spotify no cumple tus necesidades de "ser cool", puedes ponerle un poco de sazon (SPICEtify):</h4>
+		<pre class="code-section"><code class="zsh">chmod a+rw /opt/spotify/Apps
 chmod a+rw /opt/spotify/Apps/*
 sudo chown -R tuuser:tuuser /opt/spotify
 curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify.cli/master/install.sh | sh</code></pre>
-	<h4>Con eso es suficiente para que puedas presumir de tu spotify tuneado y dejes de ser un pesado con el 'neofetch'</h4>
-	<h4>Que si, que si, ya vimos la "A" en la terminal, ahora abre ese spotify to' guapo que tienes y ponte algo de una banda indie que solo tu y sus integrantes conocen</h4>
-	<br>
-	<h4>Si te has cansado de leer todo este "articulo" una y otra vez y todavia no sabes ni como abrir una terminal en tu linux (o si has instalado con arch-install ~_~) no puedo hacer nada por ti. Pero si sabes abrir una terminal y escribir algunos caracteres, puedes usar un script que ya he hecho para los script kiddies con miedo a usar nvim y los necesitados de una "interfaz grafica". Vela aquí tontin: <a href="https://github.com/syltr1x/mythings/blob/main/spo_spi.sh" target="_blank">aquí estoy al rescate :)</a></h4>
+		<p>Con eso es suficiente para que puedas presumir de tu spotify tuneado y dejes de ser un pesado con el 'neofetch'</p>
+		<p>"Que si, que si, ya vimos la "A" en la terminal, ahora abre ese spotify to' guapo que tienes y ponte algo de una banda indie que solo tu y sus integrantes conocen"</p>
+		<br>
+		<h4>Hi script kiddie. <a href="https://github.com/syltr1x/mythings/blob/main/spo_spi.sh" target="_blank">Im Here!.</a> Just ctrl+c & ctrl+v</h4>
+	</div>
 </body>
 </html>

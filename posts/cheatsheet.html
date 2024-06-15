@@ -8,102 +8,104 @@
     <link rel="stylesheet" href="./styles.css">
     <script src="/static/main.js"></script>
 </head>
-<body>
+<body class="content-body">
     <nav><ul>
         <li><a href="/">Home</a></li>
         <li><a href="/about/">About</a></li>
         <li><a href="/projects/">Projects</a></li>
         <li><a href="/posts/">Blog</a></li>
     </ul></nav>
-    <h2>- INDICE</h2>
-    <h3>*1 Windows dando x culo (para variar)</h3>
-    <h4>1.1: <button class="indexbtn" onclick="hook_item('bing-search')">Desactivar busqueda bing en Barra de tareas</button></h4>
-    <h4>1.2: <button class="indexbtn" onclick="hook_item('debloater')">Eliminar BloatWare (Aplicaciones Instaladas por Defecto)</button></h4>
-    <h4>1.3: <button class="indexbtn" onclick="hook_item('cpu-bypass')">Bypassear Actualizacion a Windows 11 (CPU)</button></h4>
-    <h4>1.4: <button class="indexbtn" onclick="hook_item('upgrade-bypass')">Bypassear Actualizacion a Windows 11 (UPGRADE)</button></h4>
-    <h4>1.5: <button class="indexbtn" onclick="hook_item('tpm-bypass')">Bypassear Actualizacion a Windows 11 (TPM)</button></h4>
-    <h3>*2 Cuestion de discos, particiones e instalaciones</h3>
-    <h4>2.1: <button class="indexbtn" onclick="hook_item('rufus')">Crear Booteables Windows</button></h4>
-    <h4>2.2: <button class="indexbtn" onclick="hook_item('balena')">Crear Boteables Linux</button></h4>
-    <h4>2.3: <button class="indexbtn" onclick="hook_item('partwiz')">Gestionar Discos</button></h4>
-    <h4>2.4: <button class="indexbtn" onclick="hook_item('grub-boot')">Configurar GRUB (generico) (win/linux dual boot)</button></h4>
-    <h3>*3 Utilidades ???</h3>
-    <h4>3.1 <button class="indexbtn" onclick="hook_item('activate-windows')">Activar Windows (10 y 11)</button></h4>
-    <h4>3.2 <button class="indexbtn" onclick="hook_item('ahkey')">Crear Shortcuts</button></h4>
-    <table>
-        <tr>
-            <th>Modificaciones de Registro</th>
-            <th>Tipo</th>
-            <th>Valor</th>
-        </tr>
-        <tr id="bing-search">
-            <td>Equipo\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Search\BingSearchEnabled</td>
-            <td>DWORD (32)</td>
-            <td>0</td>
-        </tr>
-        <tr id="cpu-bypass">
-            <td>Equipo\HKEY_LOCAL_MACHINE\SYSTEM\Setup\MoSetup\AllowUpgradesWithUnsupportedTPMOrCPU</td>
-            <td>DWORD (32)</td>
-            <td>1</td>
-        </tr>
-        <tr id="upgrade-bypass">
-            <td>Equipo\HKEY_LOCAL_MACHINE\SYSTEM\Setup\LabConfig\BypassSecureBootCheck</td>
-            <td>DWORD (32)</td>
-            <td>1</td>
-        </tr>
-        <tr id="tpm-bypass">
-            <td>Equipo\HKEY_LOCAL_MACHINE\SYSTEM\Setup\LabConfig\BypassTPMCheck</td>
-            <td>DWORD (32)</td>
-            <td>1</td>
-        </tr>
-    </table>
-    <table>
-        <tr>
-            <th>Comandos Powershell</th>
-            <th>Interprete de Comandos</th>
-        </tr>
-        <tr id="debloater">
-            <td>iwr -useb https://raw.githubusercontent.com/Sycnex/Windows10Debloater/master/Windows10Debloater.ps1 | iex</td>
-            <td>Powershell (admin)</td>
-        </tr>
-        <tr>
-            <td>iwr -useb https://raw.githubusercontent.com/spicetify/spicetify-cli/master/install.ps1 | iex</td>
-            <td>Powershell</td>
-        </tr>
-        <tr id="activate-windows">
-            <td>iwr -useb https://raw.githubusercontent.com/syltr1x/mythings/main/activate.ps1 | iex</td>
-            <td>CMD / Powershell</td>
-        </tr>
-        <tr id="grub-boot">
-            <td>bcdedit /set {bootmgr} path \EFI\ubuntu\grubx64.efi</td>
-            <td>CMD</td>
-        </tr>
-    </table>
-    <table>
-        <tr>
-            <th>Programa / Aplicacion</th>
-            <th>Enlace</th>
-        </tr>
-        <tr id="rufus">
-            <td>Rufus / Herramientas de Microsoft</td>
-            <td><a target="_blank" href="https://rufus.ie/es/">rufus.ie/es/</a></td>
-        </tr>
-        <tr id="balena">
-            <td>Balena Etcher</td>
-            <td><a target="_blank" href="https://etcher.balena.io/#download-etcher">etcher.balena.io/</a></td>
-        </tr>
-        <tr id="partwiz">
-            <td>MiniTool Partition Wizard</td>
-            <td><a target="_blank" href="https://www.partitionwizard.com/">partitionwizard.com/</a></td>
-        </tr>
-        <tr>
-            <td>x64dbg</td>
-            <td><a target="_blank" href="https://x64dbg.com/">x64dbg.com/</a></td>
-        </tr>
-        <tr id="ahkey">
-            <td>AutoHotkey</td>
-            <td><a target="_blank" href="https://www.autohotkey.com/">autohotkey.com/</a></td>
-        </tr>
-    </table>
+    <div class="content-post">
+        <h2>- INDICE</h2>
+        <h3>*1 Windows dando x culo (para variar)</h3>
+        <h4>1.1: <button class="indexbtn" onclick="hook_item('bing-search')">Desactivar busqueda bing en Barra de tareas</button></h4>
+        <h4>1.2: <button class="indexbtn" onclick="hook_item('debloater')">Eliminar BloatWare (Aplicaciones Instaladas por Defecto)</button></h4>
+        <h4>1.3: <button class="indexbtn" onclick="hook_item('cpu-bypass')">Bypassear Actualizacion a Windows 11 (CPU)</button></h4>
+        <h4>1.4: <button class="indexbtn" onclick="hook_item('upgrade-bypass')">Bypassear Actualizacion a Windows 11 (UPGRADE)</button></h4>
+        <h4>1.5: <button class="indexbtn" onclick="hook_item('tpm-bypass')">Bypassear Actualizacion a Windows 11 (TPM)</button></h4>
+        <h3>*2 Cuestion de discos, particiones e instalaciones</h3>
+        <h4>2.1: <button class="indexbtn" onclick="hook_item('rufus')">Crear Booteables Windows</button></h4>
+        <h4>2.2: <button class="indexbtn" onclick="hook_item('balena')">Crear Boteables Linux</button></h4>
+        <h4>2.3: <button class="indexbtn" onclick="hook_item('partwiz')">Gestionar Discos</button></h4>
+        <h4>2.4: <button class="indexbtn" onclick="hook_item('grub-boot')">Configurar GRUB (generico) (win/linux dual boot)</button></h4>
+        <h3>*3 Utilidades ???</h3>
+        <h4>3.1 <button class="indexbtn" onclick="hook_item('activate-windows')">Activar Windows (10 y 11)</button></h4>
+        <h4>3.2 <button class="indexbtn" onclick="hook_item('ahkey')">Crear Shortcuts</button></h4>
+        <table>
+            <tr>
+                <th>Modificaciones de Registro</th>
+                <th>Tipo</th>
+                <th>Valor</th>
+            </tr>
+            <tr id="bing-search">
+                <td>Equipo\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Search\BingSearchEnabled</td>
+                <td>DWORD (32)</td>
+                <td>0</td>
+            </tr>
+            <tr id="cpu-bypass">
+                <td>Equipo\HKEY_LOCAL_MACHINE\SYSTEM\Setup\MoSetup\AllowUpgradesWithUnsupportedTPMOrCPU</td>
+                <td>DWORD (32)</td>
+                <td>1</td>
+            </tr>
+            <tr id="upgrade-bypass">
+                <td>Equipo\HKEY_LOCAL_MACHINE\SYSTEM\Setup\LabConfig\BypassSecureBootCheck</td>
+                <td>DWORD (32)</td>
+                <td>1</td>
+            </tr>
+            <tr id="tpm-bypass">
+                <td>Equipo\HKEY_LOCAL_MACHINE\SYSTEM\Setup\LabConfig\BypassTPMCheck</td>
+                <td>DWORD (32)</td>
+                <td>1</td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <th>Comandos Powershell</th>
+                <th>Interprete de Comandos</th>
+            </tr>
+            <tr id="debloater">
+                <td>iwr -useb https://raw.githubusercontent.com/Sycnex/Windows10Debloater/master/Windows10Debloater.ps1 | iex</td>
+                <td>Powershell (admin)</td>
+            </tr>
+            <tr>
+                <td>iwr -useb https://raw.githubusercontent.com/spicetify/spicetify-cli/master/install.ps1 | iex</td>
+                <td>Powershell</td>
+            </tr>
+            <tr id="activate-windows">
+                <td>iwr -useb https://raw.githubusercontent.com/syltr1x/mythings/main/activate.ps1 | iex</td>
+                <td>CMD / Powershell</td>
+            </tr>
+            <tr id="grub-boot">
+                <td>bcdedit /set {bootmgr} path \EFI\ubuntu\grubx64.efi</td>
+                <td>CMD</td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <th>Programa / Aplicacion</th>
+                <th>Enlace</th>
+            </tr>
+            <tr id="rufus">
+                <td>Rufus / Herramientas de Microsoft</td>
+                <td><a target="_blank" href="https://rufus.ie/es/">rufus.ie/es/</a></td>
+            </tr>
+            <tr id="balena">
+                <td>Balena Etcher</td>
+                <td><a target="_blank" href="https://etcher.balena.io/#download-etcher">etcher.balena.io/</a></td>
+            </tr>
+            <tr id="partwiz">
+                <td>MiniTool Partition Wizard</td>
+                <td><a target="_blank" href="https://www.partitionwizard.com/">partitionwizard.com/</a></td>
+            </tr>
+            <tr>
+                <td>x64dbg</td>
+                <td><a target="_blank" href="https://x64dbg.com/">x64dbg.com/</a></td>
+            </tr>
+            <tr id="ahkey">
+                <td>AutoHotkey</td>
+                <td><a target="_blank" href="https://www.autohotkey.com/">autohotkey.com/</a></td>
+            </tr>
+        </table>
+    </div>
 </body>
 </html>

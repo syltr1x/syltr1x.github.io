@@ -11,25 +11,28 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
 	<script>hljs.highlightAll();</script>
 </head>
-<body>
+<body class="content-body">
     <nav><ul>
         <li><a href="/">Home</a></li>
         <li><a href="/about/">About</a></li>
         <li><a href="/projects/">Projects</a></li>
         <li><a href="/posts/">Blog</a></li>
     </ul></nav>
-	<h2>Vencord brinda algunas funcionalidades extra a tu Discord.</h2>
-	<h4>Si bien tras meses de uso no experimente ningún problema, recuerden que esto lo hacen bajo su propia responsabilidad</h4>
-	<h4>El Instalador se encuentra en: <a href="https://vencord.dev/download/">vencord.dev/download</a></h4>
-	<h4>Esta disponible para todos los sistemas operativos y navegadores a excepción de Safari</h4><br>
-	<h4>Una vez ejecutado el instalador se vera una ventana como esta:</h4>
-	<img src="/static/img/vencord_install.png">
-	<h4>En caso de que no detecte la instalación de discord puedes ingresar el path manualmente</h4>
-	<img src="/static/img/vencord_path.png">
-	<h4>Si no conoces la ruta de instalación de discord puedes averiguarlo ejecutando lo siguiente en powershell:</h4>
-	<pre class="code-section"><code class="ps1">$discordPath = (Get-ItemProperty -Path "Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Uninstall\" | Where-Object { $_.DisplayName -like "*Discord" }).UninstallString
+	<div class="content-post">
+		<h3>Vencord brinda algunas funcionalidades extra a tu Discord.</h2>
+		<br>
+		<h4>Si bien tras meses de uso no experimente ningún problema, recuerden que esto lo hacen bajo su propia responsabilidad</h4>
+		<p>El Instalador se encuentra en: <a href="https://vencord.dev/download/">vencord.dev/download</a></p>
+		<p>Esta disponible para todos los sistemas operativos y navegadores a excepción de Safari</p><br>
+		<h4>Una vez ejecutado el instalador se vera una ventana como esta:</h4>
+		<img src="/static/img/posts/vencord_install.png">
+		<h4>En caso de que no detecte la instalación de discord puedes ingresar el path manualmente</h4>
+		<img src="/static/img/posts/vencord_path.png">
+		<h4>Si no conoces la ruta de instalación de discord puedes averiguarlo ejecutando el siguiente comando en powershell:</h4>
+		<pre class="code-section"><code class="ps1">$discordPath = (Get-ItemProperty -Path "Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Uninstall\" | Where-Object { $_.DisplayName -like "*Discord" }).UninstallString
 $discordPath = $discordPath.Split(" ")
 $discordPath = $discordPath[0]
 $discordPath = $discordPath.Substring(0, $discordPath.Length - 11)</code></pre>
+	</div>
 </body>
 </hmtl>

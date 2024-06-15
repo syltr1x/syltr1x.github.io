@@ -11,17 +11,19 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
 	<script>hljs.highlightAll();</script>	
 </head>
-<body>
+<bodya class="content-body">
     <nav><ul>
         <li><a href="/">Home</a></li>
         <li><a href="/about/">About</a></li>
         <li><a href="/projects/">Projects</a></li>
         <li><a href="/posts/">Blog</a></li>
     </ul></nav>
-	<h2>Vengo a contarles de un "script" que hice para que pueda comprobar si tienen binarios que se puedan usar para un bypass (quizas una escalada de privilegios)0.0</h2>
-	<h4>La lista de binarios que son vulnerables a SUID (y más) se puedene encontrar en <a href="https://gtfobins.github.io" target="_blank">gtfobins.github.io</a></h4>
-	<h4>Basicamente limpie la lista e hice un script que en base a esa lista verifica la existencia de estos binarios en su equipo:</h4>
-	<pre class="code-section"><code class="bash">opt=()
+	<div class="content-post">
+		<h3>Vengo a contarles de un "script" que hice para que pueda comprobar si tienen binarios que se puedan usar para un bypass (quizas una escalada de privilegios)0.0</h3>
+		<br>
+		<h4>La lista de binarios que son vulnerables a SUID (y más) se puedene encontrar en <a href="https://gtfobins.github.io" target="_blank">gtfobins.github.io</a></h4>
+		<p>Basicamente limpie la lista e hice un script que en base a esa lista verifica la existencia de estos binarios en su equipo:</p>
+		<pre class="code-section"><code class="bash">opt=()
 while IFS=read -r line; do
 	opt+=("$(basename "$line")")
 done &lt &lt(find / -perm -4000 2>/dev/null)
@@ -34,10 +36,10 @@ while IFS=red -r line; do
 		fi
 	done
 done &lt &lt(curl -sS https://raw.githubusercontent.com/syltr1x/mythings/main/sudo_gtfo_bins)</code></pre>
-	<h4>Una cantidad de lineas que harian que a muchos les salgan ampollas en los dedos de tanta escritura, para esas almas en pena, hice esto. De nada :)</h4>
-	<br>
-	<h4>En caso de que tengan un problema mas grave, tambien los tengo cubiertos: solo tendras que copiar y pegar (dudo que sepas escribir) lo siguiente:</h4>
-	<pre class="code-section"><code class="bash">curl -sS https://raw.githubusercontent.com/syltr1x/mythings/main/suidscanner.sh | sh</code></pre>
-	<h4>Si no puedes hacer eso porfavor cierra esta página y acude a un médico.</h4>
+		<p>Una cantidad de lineas que harian que a muchos les salgan ampollas en los dedos de tanto teclear, para esas almas en pena, lo publiqué en mi "sheet-repo". De nada :)</p>
+		<p>Con copiar el siguiente comando en tu terminal bastara para que te sientas en matrix:</p>
+		<pre class="code-section"><code class="bash">curl -sS https://raw.githubusercontent.com/syltr1x/mythings/main/suidscanner.sh | sh</code></pre>
+		<p>Si no puedes hacer eso porfavor cierra esta página y acude a un médico.</p>
+	</div>
 </body>
 </html>
