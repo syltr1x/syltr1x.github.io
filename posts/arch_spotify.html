@@ -22,7 +22,8 @@
 		<h3>Una guía de los comandos que yo he utilizado para instalar spotify (y spicetify) en mi Arch Linux</h3>
 		<br><br>
 		<h4>Primero instalamos Spotify desde un AUR:</h4>
-		<pre class="code-section"><code class="zsh">git clone https://aur.archlinux.org/spotify.git
+		<pre class="code-section"><code class="zsh">gpg --recv-keys 6224F9941A8AA6D1
+git clone https://aur.archlinux.org/spotify.git
 cd spotify
 makepkg -si
 chmod +x spotify.sh && ./spotify.sh</code></pre>
