@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Rice | Syltr1x Page</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="/static/prism.css">
+</head>
+<body class="content-body">
+    <nav><ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/posts/">Blog</a></li>
+    </ul></nav>
+    <div class="content-post">
+		<h4>Los archivos de configuración se pueden encontrar en <a href="https://github.com/syltr1x/dotfiles" target="_blank" class="linked">syltr1x/dotfiles</a>. Aquí desarrollo las configuraciones de forma mas personal y adjunto algunas imágenes.</h4>
+		<br>
+		<h3>- Configuración de Qtile</h3>
+		<p>* Para instalar Qtile debería buscar la mejor manera para su distribución. en <a href="https://docs.qtile.org", target="_blank" class="linked">qtile.org</a></p>
+		<p>El archivo de configuración se encuentra en ~/.config/qtile/config.py. Puedes reemplazarlo por <a href="https://github.com/syltr1x/dotfiles/blob/main/qtile/config.py" target="_blank" class="linked">dotfiles/qtile/config.py</a></p>
+        <br><br>
+        <h3>- Configuración de Hyprland</h3>
+        <pre class="code-section"><code class="language-bash">sudo git clone https://aur.archlinux.org/yay-git.git/ /opt/
+sudo chown tuuser:tuuser /opt/yay-git
+cd /opt/yay-git
+sudo makepkg -si
+sudo git clone https://github.com/soldoestech/hyprland.git
+sudo chown tuuser:tuuser /opt/hyprland
+cd /opt/hyprland
+chmod +x set-hypr
+./set-hypr</code></pre>
+        <br><br>
+        <h3>- Configuración de Kitty</h3>
+        
+	</div>
+    <script src="/static/main.js"></script>
+    <script src="/static/prism.js"></script>
+</body>
+</html>
