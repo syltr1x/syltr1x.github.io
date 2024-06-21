@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GameHub | Syltr1x Page</title>
     <link rel="stylesheet" href="/static/style.css">
-    <script src="/static/main.js"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/atom-one-dark.min.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
-	<script>hljs.highlightAll();</script>
+    <link rel="stylesheet" href="/static/prism.css">
 </head>
 <body class="content-body">
     <nav><ul>
@@ -23,15 +20,17 @@
         <h3>Método de Instalación: </h3>
         <br>
         <p>Windows:</p>
-        <pre class="code-section"><code class="ps1">iwr -useb https://raw.githubusercontent.com/syltr1x/syltr1x.github.io/main/gamehub/installer.ps1 | iex
+        <pre class="code-section"><code class="language-powershell">iwr -useb https://raw.githubusercontent.com/syltr1x/syltr1x.github.io/main/gamehub/installer.ps1 | iex
 cd gamehub
 py -m pip install requirements.txt
 py app.py</code></pre>
         <p>Linux/Mac OS:</p>
-        <pre class="code-section"><code class="zsh">curl -fsSL https://raw.githubusercontent.com/syltr1x/syltr1x.github.io/main/gamehub/installer.sh | sh
+        <pre class="code-section"><code class="language-bash">curl -fsSL https://raw.githubusercontent.com/syltr1x/syltr1x.github.io/main/gamehub/installer.sh | sh
 cd gamehub
 python3 -m pip install requirements.txt
 python3 app.py</code></pre>
     </div>
+    <script src="/static/main.js"></script>
+    <script src="/static/prism.js"></script>
 </body>
 </html>
