@@ -6,10 +6,7 @@
     <title>Arch Spotify | Syltr1x Page</title>
     <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="/static/style.css">
-    <script src="/static/main.js"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/atom-one-dark.min.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
-	<script>hljs.highlightAll();</script>
+	<link rel="stylesheet" href="/static/prism.css">
 </head>
 <body class="content-body">
 	<nav><ul>
@@ -22,13 +19,13 @@
 		<h3>Una guía de los comandos que yo he utilizado para instalar spotify (y spicetify) en mi Arch Linux</h3>
 		<br><br>
 		<h4>Primero instalamos Spotify desde un AUR:</h4>
-		<pre class="code-section"><code class="zsh">gpg --recv-keys 6224F9941A8AA6D1
+		<pre class="code-section"><code class="language-bash">gpg --recv-keys 6224F9941A8AA6D1
 git clone https://aur.archlinux.org/spotify.git
 cd spotify
 makepkg -si
 chmod +x spotify.sh && ./spotify.sh</code></pre>
 		<h4>Si el viejo spotify no cumple tus necesidades de "ser cool", puedes ponerle un poco de sazón (SPICEtify):</h4>
-		<pre class="code-section"><code class="zsh">chmod a+rw /opt/spotify/Apps
+		<pre class="code-section"><code class="language-bash">chmod a+rw /opt/spotify/Apps
 chmod a+rw /opt/spotify/Apps/*
 sudo chown -R tuuser:tuuser /opt/spotify
 curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify.cli/master/install.sh | sh</code></pre>
@@ -37,5 +34,7 @@ curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify.cli/master/inst
 		<br>
 		<h4>Hi script kiddie. <a href="https://github.com/syltr1x/mythings/blob/main/spo_spi.sh" target="_blank" class="linked">Im Here!.</a> Just ctrl+c & ctrl+v</h4>
 	</div>
+    <script src="/static/main.js"></script>
+	<script src="/static/prism.js"></script>
 </body>
 </html>

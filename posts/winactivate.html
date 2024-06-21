@@ -6,10 +6,7 @@
     <title>Windows keys | Syltr1x Page</title>
     <link rel="stylesheet" href="/static/style.css">
     <link rel="stylesheet" href="./styles.css">
-    <script src="/static/main.js"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/atom-one-dark.min.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
-	<script>hljs.highlightAll();</script>
+	<link rel="stylesheet" href="/static/prism.css">
 </head>
 <body class="content-body">
     <nav><ul>
@@ -22,7 +19,7 @@
 		<h3>Yo se que te asusta pero vas a tener que abrir un cmd con permisos de admin. Prometo no hackearte (quizás)-_-</h3>
 		<br><br>
 		<h4>Los comandos a usar:</h4>
-		<pre class="code-section"><code class="cmd">slmgr.vbs -upk :: Borra la clave
+		<pre class="code-section"><code class="language-batch">slmgr.vbs -upk :: Borra la clave
 slmgr.vbs /ipk {clave}
 slmgr.vbs /skms kms.digiboy.ir
 slmgr.vbs /ato</code></pre>
@@ -135,5 +132,7 @@ slmgr.vbs /ato</code></pre>
 			</tr>
 		</table>
 	</div>
+    <script src="/static/main.js"></script>
+	<script src="/static/prism.js"></script>
 </body>
 </html>

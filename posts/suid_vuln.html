@@ -7,11 +7,10 @@
     <link rel="stylesheet" href="/static/style.css">
     <link rel="stylesheet" href="./styles.css">
     <script src="/static/main.js"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/atom-one-dark.min.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
-	<script>hljs.highlightAll();</script>	
+	<link rel="stylesheet" href="/static/prism.css">
+
 </head>
-<bodya class="content-body">
+<body class="content-body">
     <nav><ul>
         <li><a href="/">Home</a></li>
         <li><a href="/about/">About</a></li>
@@ -23,7 +22,7 @@
 		<br>
 		<h4>La lista de binarios que son vulnerables a SUID (y más) se puedene encontrar en <a href="https://gtfobins.github.io" target="_blank" class="linked">gtfobins.github.io</a></h4>
 		<p>Basicamente limpie la lista e hice un script que en base a esa lista verifica la existencia de estos binarios en su equipo:</p>
-		<pre class="code-section"><code class="bash">opt=()
+		<pre class="code-section"><code class="language-python">opt=()
 while IFS=read -r line; do
 	opt+=("$(basename "$line")")
 done &lt &lt(find / -perm -4000 2>/dev/null)
@@ -41,5 +40,6 @@ done &lt &lt(curl -sS https://raw.githubusercontent.com/syltr1x/mythings/main/su
 		<pre class="code-section"><code class="bash">curl -sS https://raw.githubusercontent.com/syltr1x/mythings/main/suidscanner.sh | sh</code></pre>
 		<p>Si no puedes hacer eso porfavor cierra esta página y acude a un médico.</p>
 	</div>
+	<script src="/static/prism.js"></script>
 </body>
 </html>
