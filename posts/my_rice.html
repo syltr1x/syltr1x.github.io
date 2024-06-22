@@ -113,16 +113,15 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
         <br>
         <p>Puedes también copiar el archivo de la powerlevel10k</p>
         <pre class="code-section"><code class="language-bash">curl -s https://raw.githubusercontent.com/syltr1x/dotfiles/.p10k.zsh | tee ~/.p10k.zsh > /root/.p10k.zsh
-echo '' > ~/.p10k.zsh
-sudo echo '' > /root/.p10k.zsh</code></pre>
+echo 'typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=255' > ~/.p10k.zsh
+sudo echo 'typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=196' > /root/.p10k.zsh</code></pre>
         <br>
-        <p>Y la configuración de mi zsh. Para esto vas a necesitar agregar las alias para que no de error, o comentar la linea</p>
+        <p>Y la configuración de mi zsh. Para esto vas a necesitar agregar las alias para que no de error, o comentar la linea 116</p>
         <pre class="code-section"><code class="language-bash">curl -s https://raw.githubusercontent.com/syltr1x/dotfiles/.zshrc | tee ~/.zshrc > /root/.zshrc</code></pre>
         <br><br>
         <h3>- Configuración de Alias para la zsh</h3>
         <pre class="code-section"><code class="language-bash">curl -s https://raw.githubusercontent.com/syltr1x/dotfiles/main/.zshalias -o ~/.zshalias
 sudo ln -s ~/.zshalias /root/.zshalias</code></pre>
-
 	</div>
     <script src="/static/main.js"></script>
     <script src="/static/prism.js"></script>
