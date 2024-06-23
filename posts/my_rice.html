@@ -26,7 +26,12 @@
                 <div class="tab" data-tab="debian-qtile">Debian Based</div>
             </div>
             <div id="arch-qtile" class="tab-content active">
-                <pre class="code-section"><code class="language-bash">pacman -S qtile</code></pre>
+                <pre class="code-section"><code class="language-bash">sudo git clone https://aur.archlinux.org/yay-git.git/ /opt/				
+sudo chown tuuser:tuuser /opt/yay-git
+cd /opt/yay-git
+makepkg -si
+yay -S python-pulsectl-asyncio
+pacman -S qtile</code></pre>
             </div>
             <div id="debian-qtile" class="tab-content">
                 <pre class="code-section"><code class="language-bash">sudo apt install xserver-xorg xinit
@@ -45,7 +50,7 @@ pip install qtile</code></pre>
         <pre class="code-section"><code class="language-bash">sudo git clone https://aur.archlinux.org/yay-git.git/ /opt/
 sudo chown tuuser:tuuser /opt/yay-git
 cd /opt/yay-git
-sudo makepkg -si
+makepkg -si
 sudo git clone https://github.com/soldoestech/hyprland.git
 sudo chown tuuser:tuuser /opt/hyprland
 cd /opt/hyprland
