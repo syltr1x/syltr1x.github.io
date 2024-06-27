@@ -134,26 +134,28 @@ tr:nth-child(even) {
 }
 
 .tabs {
+    margin-bottom: -0.5em;
     display: flex;
     cursor: pointer;
 }
 .tab {
-    border-radius: 5px;
+    border-radius: 5px 5px 0 0;
     padding: 10px;
     border: none;
     margin-right: 5px;
 }
 .tab.active {
-    border: 1px solid #aaa;
-    background-color: #333;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    background-color: #282c34;
     color: white;
 }
 .tab-content {
     display: none;
 }
+.tab-content .code-section {
+    border-radius: 0 5px 5px 5px;
+}
 .tab-content.active {
     display: block;
-}
-.code-section {
-    transition: all 6s;
 }
