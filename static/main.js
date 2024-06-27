@@ -1,9 +1,3 @@
-function show_info() {
-    console.log("Mostrando")
-}
-function download(url) {
-    window.open(url, "_blank")
-}
 function hook_item(id) {
     let hooked_item = document.getElementById(id);
     hooked_item.style.animation = 'remark 0.8s linear'
@@ -12,7 +6,6 @@ function hook_item(id) {
     }, 900)
     window.location.href = `#${id}`
 }
-show_info()
 const tabContainers = document.querySelectorAll('.tab-container');
 
 tabContainers.forEach(container => {
