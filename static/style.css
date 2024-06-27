@@ -38,6 +38,7 @@ li > a.active {
 	color: #fff
 }
 .code-section {
+    border: 1px solid #ddd;
 	margin: 1.5rem 1rem;
 	overflow: hidden;
 	border-radius: 0.4rem;
