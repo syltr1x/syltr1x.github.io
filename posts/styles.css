@@ -132,23 +132,20 @@ tr:nth-child(even) {
     60% {background-color: #898989;} 
     90% {background-color:#232323;}
 }
-
 .tabs {
     margin-bottom: -0.5em;
     display: flex;
     cursor: pointer;
 }
 .tab {
+    border: 1px solid #777;
+    background-color: #282a36;
     border-radius: 5px 5px 0 0;
     padding: 10px;
-    border: none;
-    margin-right: 5px;
 }
 .tab.active {
-    border: 1px solid #ddd;
-    border-bottom: none;
-    background-color: #282c34;
-    color: white;
+    color: #222;
+    background-color: #7ec699;
 }
 .tab-content {
     display: none;
