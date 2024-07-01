@@ -89,7 +89,9 @@ chmod +x set-hypr
 sudo mv nvim-linux64/bin/nvim /usr/bin/nvim
 sudo chmod +x /usr/bin/nvim</code></pre>
         <p>Para Aplicar la configuración de Neovim</p>
-        <pre class="code-section"><code class="language-bash">curl -s https://raw.githubusercontent.com/syltr1x/dotfiles/main/nvim/init.vim -o ~/.config/nvim/init.vim --create-dirs</code></pre>
+        <pre class="code-section"><code class="language-bash">curl -s https://raw.githubusercontent.com/syltr1x/dotfiles/main/nvim/init.vim -o ~/.config/nvim/init.vim --create-dirs
+curl -s https://raw.githubusercontent.com/syltr1x/dotfiles/main/nvim/plugins.vim -o ~/.config/nvim/plugins.vim
+curl -s https://raw.githubusercontent.com/syltr1x/dotfiles/main/nvim/configs.vim -o ~/.config/nvim/configs.vim</code></pre>
 		<br>
 		<p>Luego es necesario ejecutar algunos comandos que pongan todo a punto</p>
 		<pre class="code-section"><code class="language-">:PlugInstall
