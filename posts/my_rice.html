@@ -127,12 +127,13 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions</code></pre>
         <br>
         <p>Puedes también copiar el archivo de la powerlevel10k</p>
-        <pre class="code-section"><code class="language-bash">curl -s https://raw.githubusercontent.com/syltr1x/dotfiles/.p10k.zsh | tee ~/.p10k.zsh > /root/.p10k.zsh
+        <pre class="code-section"><code class="language-bash">curl -s https://raw.githubusercontent.com/syltr1x/dotfiles/main/.p10k.zsh | tee ~/.p10k.zsh > /root/.p10k.zsh
 echo 'typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=255' > ~/.p10k.zsh
 sudo echo 'typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=196' > /root/.p10k.zsh</code></pre>
         <br>
         <p>Y la configuración de mi zsh. Para esto vas a necesitar agregar las alias para que no de error, o comentar la linea 116</p>
-        <pre class="code-section"><code class="language-bash">curl -s https://raw.githubusercontent.com/syltr1x/dotfiles/.zshrc | tee ~/.zshrc > /root/.zshrc</code></pre>
+        <pre class="code-section"><code class="language-bash">curl -s https://raw.githubusercontent.com/syltr1x/dotfiles/main/.zshrc
+sudo cp ~/.zshrc /root/.zshrc</code></pre>
         <br><br>
         <h3>- Configuración de Alias para la zsh</h3>
         <pre class="code-section"><code class="language-bash">curl -s https://raw.githubusercontent.com/syltr1x/dotfiles/main/.zshalias -o ~/.zshalias
