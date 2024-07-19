@@ -31,7 +31,7 @@
             </div>
             <div id="arch-qtile" class="tab-content active">
                 <pre class="code-section"><code class="language-bash">sudo git clone https://aur.archlinux.org/yay-git.git/ /opt/				
-sudo chown tuuser:tuuser /opt/yay-git
+sudo chown syltr1x:syltr1x /opt/yay-git
 cd /opt/yay-git
 makepkg -si
 yay -S python-pulsectl-asyncio
@@ -47,21 +47,21 @@ pip install qtile</code></pre>
 		<p>En caso de usar otra distribución. Puede encontrar la guía de instalación en <a href="https://docs.qtile.org/en/stable/manual/install/index.html", target="_blank" class="linked">qtile.org</a></p>
         <br>
         <p>Aplicar la configuración</p>
-        <pre class="code-section"><code class="language-bash">curl -s https://raw.githubusercontent.com/syltr1x/dotfiles/qtile/config.py -o ~/.config/qtile/config.py</code></pre>
+        <pre class="code-section"><code class="language-bash">curl -s https://raw.githubusercontent.com/syltr1x/dotfiles/qtile/config.py -o ~/.config/qtile/config.py --create-dirs</code></pre>
         <br><br>
         <h3>- Configuración de Hyprland (en Arch)</h3>
         <p>Instalación de yay, y de Hyprland mediante script</p>
         <pre class="code-section"><code class="language-bash">sudo git clone https://aur.archlinux.org/yay-git.git/ /opt/
-sudo chown tuuser:tuuser /opt/yay-git
+sudo chown syltr1x:syltr1x /opt/yay-git
 cd /opt/yay-git
 makepkg -si
 sudo git clone https://github.com/soldoestech/hyprland.git
-sudo chown tuuser:tuuser /opt/hyprland
+sudo chown syltr1x:syltr1x /opt/hyprland
 cd /opt/hyprland
 chmod +x set-hypr
 ./set-hypr</code></pre>
         <p>Aplicar la configuración de Hyprland</p>
-        <pre class="code-section"><code class="language-bash">curl -s https://raw.githubusercontent.com/syltr1x/dotfiles/main/hypr/hyrpland.conf</code></pre>
+        <pre class="code-section"><code class="language-bash">curl -s https://raw.githubusercontent.com/syltr1x/dotfiles/main/hypr/hyrpland.conf -o ~/.config/hypr/hyprland.conf</code></pre>
         <br><br>
         <h3>- Configuración de Kitty</h3>
         <p>Instalación de kitty</p>
@@ -78,7 +78,7 @@ chmod +x set-hypr
             </div>
         </div>
         <p>Aplicar la configuración de kitty</p>
-        <pre class="code-section"><code class="language-bash">curl -s https://raw.githubusercontent.com/syltr1x/dotfiles/main/kitty/kitty.conf -o ~/.config/kitty/kitty.conf</code></pre>
+        <pre class="code-section"><code class="language-bash">curl -s https://raw.githubusercontent.com/syltr1x/dotfiles/main/kitty/kitty.conf -o ~/.config/kitty/kitty.conf --create-dirs</code></pre>
         <br><br>
         <h3>- Configuración de Neovim</h3>
         <p>Para Aplicar mi configuración es necesario tener instalada la ultima version de Neovim</p>
@@ -122,22 +122,32 @@ mv waybar ~/.config/</code></pre>
         </div>
         <pre class="code-section"><code class="language-bash">sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
-echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
+echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions</code></pre>
         <br>
         <p>Puedes también copiar el archivo de la powerlevel10k</p>
         <pre class="code-section"><code class="language-bash">curl -s https://raw.githubusercontent.com/syltr1x/dotfiles/main/.p10k.zsh | tee ~/.p10k.zsh > /root/.p10k.zsh
-echo 'typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=255' > ~/.p10k.zsh
-sudo echo 'typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=196' > /root/.p10k.zsh</code></pre>
+echo 'typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=255' >> ~/.p10k.zsh
+sudo echo 'typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=196' >> /root/.p10k.zsh</code></pre>
         <br>
-        <p>Y la configuración de mi zsh. Para esto vas a necesitar agregar las alias para que no de error, o comentar la linea 116</p>
+        <p>Y la configuración de mi zsh. Para esto vas a necesitar agregar las alias para que no de error, o comentar la linea 61</p>
         <pre class="code-section"><code class="language-bash">curl -s https://raw.githubusercontent.com/syltr1x/dotfiles/main/.zshrc
 sudo cp ~/.zshrc /root/.zshrc</code></pre>
         <br><br>
         <h3>- Configuración de Alias para la zsh</h3>
         <pre class="code-section"><code class="language-bash">curl -s https://raw.githubusercontent.com/syltr1x/dotfiles/main/.zshalias -o ~/.zshalias
 sudo ln -s ~/.zshalias /root/.zshalias</code></pre>
+        <br><br>
+        <h3>- Configuración de temas y extensiones para spicetify</h3>
+        <pre class="code-section"><code class="language-bash">spicetify config custom_apps lyrics-plus
+spicetify config extensions fullAppDisplay.js
+spicetify config extensions loopyLoop.js
+git clone https://github.com/spicetify/spicetify-themes/main ~/.spicetify/Themes/spicetify-themes
+mv ~/.spicetify/Themes/spicetify-themes/* ~/.spicetify/Themes/
+spicetify config current_theme Sleek
+spicetify config color_scheme Nord
+spicetify backup apply</code></pre>
         <br><br><br>
 	</div>
     <script src="/static/main.js"></script>

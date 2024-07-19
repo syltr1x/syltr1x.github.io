@@ -23,20 +23,21 @@
 		<h3>Una guía de los comandos que yo he utilizado para instalar spotify (y spicetify) en mi Arch Linux</h3>
 		<br><br>
 		<h4>Primero instalamos Spotify desde un AUR:</h4>
-		<pre class="code-section"><code class="language-bash">gpg --recv-keys 6224F9941A8AA6D1
-git clone https://aur.archlinux.org/spotify.git
-cd spotify
+		<pre class="code-section"><code class="language-bash">sudo git clone https://aur.archlinux.org/yay-git.git/ /opt/				
+sudo chown syltr1x:syltr1x /opt/yay-git
+cd /opt/yay-git
 makepkg -si
-chmod +x spotify.sh && ./spotify.sh</code></pre>
+yay -S spotify</code></pre>
 		<h4>Si el viejo spotify no cumple tus necesidades de "ser cool", puedes ponerle un poco de sazón (SPICEtify):</h4>
-		<pre class="code-section"><code class="language-bash">chmod a+rw /opt/spotify/Apps
-chmod a+rw /opt/spotify/Apps/*
-sudo chown -R tuuser:tuuser /opt/spotify
-curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify.cli/master/install.sh | sh</code></pre>
+		<pre class="code-section"><code class="language-bash">sudo chmod a+rw /opt/spotify/Apps
+sudo chmod a+rw /opt/spotify/Apps/*
+sudo chown -R syltr1x:syltr1x /opt/spotify
+curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh</code></pre>
 		<p>Con eso es suficiente para que puedas presumir de tu spotify tuneado y dejes de ser un pesado con el 'neofetch'</p>
 		<p>"Que si, que si, ya vimos la "A" en la terminal, ahora abre ese spotify to' guapo que tienes y ponte algo de una banda indie que solo tu y sus integrantes conocen"</p>
 		<br>
-		<h4>Hi script kiddie. <a href="https://github.com/syltr1x/mythings/blob/main/spo_spi.sh" target="_blank" class="linked">Im Here!.</a> Just ctrl+c & ctrl+v</h4>
+		<h4>Hi script kiddie. Copia y pega esto para <a href="https://github.com/syltr1x/mythings/blob/main/spo_spi.sh" target="_blank" class="linked">instalar spotify y spicetify</a>:</h4>
+		<pre class="code-section"><code class="language-bash">curl -s https://raw.githubusercontent.com/syltr1x/mythings/main/spo_spi.sh | sh</code></pre>
 		<br><br><br>
 	</div>
     <script src="/static/main.js"></script>
