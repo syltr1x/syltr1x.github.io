@@ -88,14 +88,22 @@ chmod +x set-hypr
         <pre class="code-section"><code class="language-bash">tar -xf nvim-linux64.tar.gz
 sudo mv nvim-linux64/bin/nvim /usr/bin/nvim
 sudo chmod +x /usr/bin/nvim</code></pre>
+        <br>
+        <p>Instalar vim-plug para manejar los plugins</p>
+        <pre class="code-section"><code class="language-bash">sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'</code></pre>
+        <br>
         <p>Para Aplicar la configuración de Neovim</p>
-        <pre class="code-section"><code class="language-bash">curl -s https://raw.githubusercontent.com/syltr1x/dotfiles/main/nvim/init.vim -o ~/.config/nvim/init.vim --create-dirs
-curl -s https://raw.githubusercontent.com/syltr1x/dotfiles/main/nvim/plugins.vim -o ~/.config/nvim/plugins.vim
-curl -s https://raw.githubusercontent.com/syltr1x/dotfiles/main/nvim/configs.vim -o ~/.config/nvim/configs.vim</code></pre>
+        <pre class="code-section"><code class="language-bash">git clone https://github.com/syltr1x/dotfiles
+cd dotfiles
+mkdir -p ~/.config/nvim/
+mv nvim/* ~/.config/nvim/</code></pre>
 		<br>
 		<p>Luego es necesario ejecutar algunos comandos que pongan todo a punto</p>
-		<pre class="code-section"><code class="language-">:PlugInstall
-:CocInstall coc-python coc-sh coc-css coc-tsserver coc-html coc-rust coc-lua</code></pre>
+		<pre class="code-section"><code class="language-">npm install -g pyright
+npm install -g typescript typescript-language-server
+npm install -g vscode-langservers-extracted bash-language-server
+rustup component add rust-analyzer</code></pre>
         <br><br>
         <h3>- Configuración de WayBar</h3>
         <p>Esta configuración esta asociada con la de Hyprland ya que yo los he usado en conjunto</p>
