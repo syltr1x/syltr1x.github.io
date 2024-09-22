@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arch Linux mirrorsmap</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+		<style>
+				* { margin: 0; padding: 0 }
+        #map { height: 100vh; z-index: 0; }
+				#info {
+					position: absolute; 
+					left: 8%;
+					top: 10%;
+					translate: -50% -50%;
+					background-color: #ddd;
+					padding: 10px;
+					border: 1px solid black;
+					border-radius: .8rem;
+					z-index: 2;
+				}
+				#card {
+					position: absolute; 
+					left: 50%;
+					top: 50%;
+					translate: -50% -50%;
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					justify-content: center;
+					height: auto;
+					max-height: 80vh;
+					width: 600px;
+					background-color: #eeee;
+					border: 2px solid black;
+					border-radius: .8rem;
+					z-index: 2; 
+					overflow: hidden;
+				}
+				#servers {
+					margin: 4.8rem 10px .5rem .5rem;
+					overflow-y: scroll;
+				}
+				#servers > li:nth-child(even) {
+					background-color: #aaa;
+				}
+				#servers > li {
+					display: flex;
+					flex-direction: row;
+					justify-content: space-between;
+					padding: 3px 0px 3px 5px;
+				}
+				#servers > li > div > i {
+					margin: 0px 10px 0px 0px;
+				}
+				#country {
+					text-decoration: underline;
+					position: absolute;
+					left: 50%;
+					top: 2%;
+					translate: -50% 0%;
+				}
+				#close-btn {
+					position: absolute;
+					left: 2%;
+					top: 2%;
+					translate: 0% 0%;
+					height: 40px;
+					width: 40px;
+					border: none;
+					border-radius: 50%;
+					outline: none;
+					background-color: #933;
+					color: #fff;
+					padding: 6px;
+				}
+				#close-btn > i { font-size: 25px; }
+				#sv_counter {
+					position: absolute;
+					right: 2%;
+					top: 5%;
+					translate: -50% 0%;
+				}
+    </style>
+</head>
+<body>
+		<div id="info">
+			<p><i class="fa-solid fa-square" style="color: #220"></i> >70 Servers</p>
+			<p><i class="fa-solid fa-square" style="color: #442"></i> 26-70 Servers</p>
+			<p><i class="fa-solid fa-square" style="color: #775"></i> 11-25 Servers</p>
+			<p><i class="fa-solid fa-square" style="color: #996"></i> 6-10 Servers</p>
+			<p><i class="fa-solid fa-square" style="color: #DD9"></i> 4-5 Servers</p>
+			<p><i class="fa-solid fa-square" style="color: #CCB"></i> 1-3 Servers</p>
+			<p><i class="fa-solid fa-square" style="color: #FEE"></i> 0 Servers</p>
+		</div>
+		<div id="card" style="display: none">
+			<button id="close-btn" onclick="toggleCard()"><i class="fa-solid fa-times"></i></button>
+			<h2 id="country"></h2>
+			<p id="sv_counter"><i class="fa-solid fa-server"></i>: <span id="sv_count"></span></p>
+			<ul id="servers">
+			</ul>
+		</div>
+    <div id="map"></div>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+			const serverCounts = {};
+
+			// Load server JSON file
+			fetch('https://raw.githubusercontent.com/syltr1x/mirrorsmap/refs/heads/main/data.json')
+			.then(response => response.json())
+			.then(data => {
+				// Count servers in each country
+				data.urls.forEach(server => {
+					let country = server.country;
+					if (country === "United States") {
+						country = "United States of America"
+					}
+					let url = server.url.split(":")[1].slice(2)
+					let protocol = server.protocol
+					serverCounts[country] = serverCounts[country] || []
+
+					let existingServer = serverCounts[country].find(s => s.url === url);
+					if (existingServer) {
+						existingServer.protocol.push(protocol) 
+					} else {
+						serverCounts[country].push({"url": url, "protocol": [protocol]});
+					}
+				});
+				loadGeoJSON();
+			})
+			.catch(error => console.error('Error al cargar el archivo JSON:', error));
+
+      // Load GeoJSON file
+			function loadGeoJSON() {
+				fetch('https://raw.githubusercontent.com/syltr1x/mirrorsmap/refs/heads/main/map.geojson')
+					.then(response => response.json())
+					.then(worldGeoJson => {
+						const map = L.map('map').setView([20, 0], 2); // Centrar el mapa
+
+						L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+							maxZoom: 19,
+						}).addTo(map);
+
+						L.geoJson(worldGeoJson, {
+							style: function (feature) {
+								const country = feature.properties.name;
+								const count = serverCounts[country] ? serverCounts[country].length : 0;
+								return {
+									fillColor: getColor(count),
+									color: '#000',
+									weight: 1,
+									fillOpacity: 1
+								};
+							},
+						onEachFeature: onEachFeature
+						}).addTo(map);
+					})
+					.catch(error => console.error('Error al cargar el GeoJSON:', error));
+			}
+			// Define color based in server's country
+			function getColor(count) {
+				return  count > 70 ? '#220' :
+					count > 25 ? '#442' :
+					count > 10 ? '#775' :
+					count > 5  ? '#996' :
+					count > 3  ? '#DD9' :
+					count > 0  ? '#CCB' : 
+					'#FFE';
+        }
+
+				function onEachFeature (feature, layer) {
+					const country = feature.properties.name;
+					const servers = serverCounts[country] || [];
+  
+					const serverUrls = servers.map(server => server.url).join(', '); // Obtain url's
+
+					layer.on('click', function () {
+						toggleCard(country, servers)
+					});
+			}
+			function toggleCard(country, servers) {
+				const card = document.getElementById("card");
+				if (card.style.display == 'none' && servers !== undefined) {
+					const title = document.querySelector("#country");
+					const sv_list = document.querySelector("#servers");
+					const sv_count = document.querySelector("#sv_count");
+
+					sv_count.textContent = servers.length;
+
+					servers.forEach((server) => {
+						let icon_section = document.createElement('div');
+						let http_icon = document.createElement('i')
+						// Create HTTP icon
+						http_icon.classList.add('fa-solid', 'fa-lock-open')
+						http_icon.title = "HTTP"
+
+						// Create HTTPS icon
+						let https_icon = document.createElement('i')
+						https_icon.classList.add('fa-solid', 'fa-lock')
+						https_icon.title = "HTTPS"
+
+						// Create rsync icon
+						let rsync_icon = document.createElement('i')
+						rsync_icon.classList.add('fa-solid', 'fa-rotate')
+						rsync_icon.title = "rsync"
+
+						// Add all icons
+						icon_section.appendChild(http_icon)
+						icon_section.appendChild(https_icon)
+						icon_section.appendChild(rsync_icon)
+
+						item = document.createElement('li')
+						item.innerHTML = server.url
+
+						if (server.protocol.includes("http")) {
+							http_icon.style.color = "#3e3"
+						}
+						if (server.protocol.includes("https")) {
+							https_icon.style.color = "#3e3"
+						}
+						if (server.protocol.includes("rsync")) {
+							rsync_icon.style.color = "#3e3"
+						}
+						item.appendChild(icon_section)
+						sv_list.appendChild(item)
+					})
+
+					title.innerHTML = country;
+					card.style.display = 'flex';
+				} else {
+					const sv_list = document.querySelector("#servers");
+					const sv_count = document.querySelector("#sv_count");
+					sv_list.innerHTML = "";
+					sv_count.textContent = "";
+					card.style.display = 'none';
+				}
+			}
+
+			// Logic to close country card when press 'esc'
+			document.addEventListener('keydown', (e) => {
+				if (e.key === "Escape" || e.keyCode === 27) {
+					toggleCard()
+				}
+			})
+    </script>
+</body>
+</html>
