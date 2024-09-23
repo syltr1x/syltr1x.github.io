@@ -1,13 +1,13 @@
 .card {
 	color: #fff;
     margin: 2rem;
+    position: relative;
     max-width: 40rem;
     justify-content: center;
     align-items: center;
     display: flex;
     background-color: #1a1a1a;
     border-radius: 5px;
-    overflow: hidden;
     transition: transform 0.3s, box-shadow 0.3s;
 }
 .card .image {
@@ -21,13 +21,43 @@
     display: block;
     padding: 3px 3px;
 }
+@property --angle{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+.card::after, .card::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 5px;
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+}
+.card::before {
+    filter: blur(0.5rem);
+    opacity: 0.8;
+}
+.card:hover::before,
+.card:hover::after {
+    background: conic-gradient(from var(--angle), #43f 3%, transparent 10%);
+    animation: 2s spin ease forwards;
+}
+@keyframes spin {
+    from{
+        --angle: 0deg
+    }
+    to{
+        --angle: 360deg
+    }
+}
 .card .content {
 	color: #fff;
     padding: 6px 12px;
-}
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px 2px  rgba(100, 100, 100, 0.5);
 }
 @media (max-width: 520px) {
     .card {
