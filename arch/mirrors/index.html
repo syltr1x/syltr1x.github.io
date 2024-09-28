@@ -132,13 +132,14 @@
 					}
 					let url = server.url.split(":")[1].slice(2)
 					let protocol = server.protocol
+					let score = Math.round(server.score) || 0
 					serverCounts[country] = serverCounts[country] || []
 
 					let existingServer = serverCounts[country].find(s => s.url === url);
 					if (existingServer) {
 						existingServer.protocol.push(protocol) 
 					} else {
-						serverCounts[country].push({"url": url, "protocol": [protocol]});
+						serverCounts[country].push({"url": url, "protocol": [protocol], "score": score});
 					}
 				});
 				loadGeoJSON();
@@ -201,6 +202,7 @@
 					const sv_count = document.querySelector("#sv_count");
 
 					sv_count.textContent = servers.length;
+					servers.sort((a, b) => b.score - a.score);
 
 					servers.forEach((server) => {
 						let icon_section = document.createElement('div');
@@ -225,7 +227,7 @@
 						icon_section.appendChild(rsync_icon)
 
 						item = document.createElement('li')
-						item.innerHTML = server.url
+						item.innerHTML = `${server.score}pts ${server.url}`
 
 						if (server.protocol.includes("http")) {
 							http_icon.style.color = "#3e3"
