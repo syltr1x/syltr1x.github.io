@@ -23,8 +23,35 @@
     display: flex;
     background-color: #1a1a1a ;
     border-radius: 5px;
-    overflow: hidden;
     transition: all 0.2s;
+    position: relative;
+}
+@property --angle{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+.abcard::before,
+.abcard::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    border-radius: 10px;
+}
+.abcard::before {
+    filter: blur(.5rem);
+    opacity: .8;
+}
+#about-card:hover::before,
+#about-card:hover::after {
+    background: conic-gradient(from var(--angle), #c961c3 5%, transparent 10%);
+    animation: 2s spin ease forwards;
 }
 .abcard .image {
     filter: grayscale(100%);
@@ -55,17 +82,16 @@
     background-size: 0% 2px;
     transition: background-size .3s;
 }
-#about-card:hover {
-    box-shadow: 0px 0px 7px 0px #c961c3;
-}
 #about-card:hover > .content > h2 {
     background-size: 100% 2px;
 }
-#skill-card:hover {
-    box-shadow: 0px 0px 7px 0px #61b1c9;
-}
 #skill-card:hover .content > h2 {
     background-size: 100% 2px;
+}
+#skill-card:hover::before,
+#skill-card:hover::after {
+    background: conic-gradient(from var(--angle), #61b1c9 5%, transparent 10%);
+    animation: 2s spin ease forwards;
 }
 .abcard .content {
     display: flex;
@@ -84,4 +110,12 @@
 }
 .abcard:hover > .image {
     filter: grayscale(0%);
+}
+@keyframes spin {
+    from {
+        --angle: 0deg
+    }
+    to {
+        --angle: 360deg
+    }
 }
