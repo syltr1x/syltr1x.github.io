@@ -121,7 +121,7 @@
 			const serverCounts = {};
 
 			// Load server JSON file
-			fetch('data.json')
+			fetch('https://raw.githubusercontent.com/syltr1x/mirrorsmap/refs/heads/main/data.json')
 			.then(response => response.json())
 			.then(data => {
 				// Count servers in each country
