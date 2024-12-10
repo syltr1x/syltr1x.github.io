@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arch Installation | Syltr1x Page</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="/static/style.css">
+		<link rel="stylesheet" href="/static/prism.css">
+    <meta property="og:title" content="Syltr1x | Instalar Arch Linux manualmente">
+    <meta property="og:description" content="Lista de comandos para instalar Arch Linux">
+    <meta property="og:image" content="/static/img/posts/cover/arch.webp">
+    <meta property="og:url" content="https://syltr1x.github.io/posts/arch_guide.html">
+</head>
+<body class="content-body">
+	<nav><ul>
+		<li><a href="/">Home</a></li>
+		<li><a href="/about/">About</a></li>
+		<li><a href="/projects/">Projects</a></li>
+		<li><a href="/posts/">Blog</a></li>
+	</ul></nav>
+	<div class="content-post">
+		<h3>Guía para instalar Arch linux manualmente</h3>
+		<p>Si bien las cosas se simplificaron con 'arch-install' es importante saber hacer la instalación manual en caso de ser necesario</p>
+		<br>
+		<h4>Primero debes tener un USB listo para instalar Arch</h4>
+		<p>No me digas que no sabes crear un USB booteable, dios mio, 2 pistas: <a class="linked" href="https://geo.mirror.pkgbuild.com/iso/" target="_blank">iso</a>, <a class="linked" href="https://etcher.balena.io/#download-etcher" target="_blank">balena</a></p>
+		<br>
+		<h4>(1) "Wifi" - Ahora si, (el USB ya iniciado) comenzemos a ejecutar un par de comandos</h4>
+		<pre class="code-section"><code class="language-bash">loadkeys es #A menos que quieras usar el teclado inglés</code></pre>
+		<p>Primero conectemonos a internet (Si tienes cableada te ahorras un par comandos)</p>
+		<pre class="code-section"><code class="language-bash">iwctl</code></pre>
+		<p>Una vez dentro de iwctl nos conectaremos a internet</p>
+		<pre class="code-section"><code class="language-bash">device list #mostrara las interfaces disponibles</code></pre>
+		<p>Una vez que identifiques tu interfaz (suele ser wlan0 si es wireless) puedes listar las redes disponibles</p>
+		<pre class="code-section"><code class="language-bash">station {tu_interfaz} get-networks</code></pre>
+		<p>Una vez veas tu red puedes conectarte a ella usando el siguiente comando</p>
+		<pre class="code-section"><code class="language-bash">station {tu_interfaz} connect {tu_red}</code></pre>
+		<br><br>
+		<h4>(2) "Discos" - Esta es una parte vital, intenta hacerla bien</h4>
+		<p>Primero si tienes varios discos deberas identificar el que quieres usar</p>
+		<pre class="code-section"><code class="language-bash">lsblk</code></pre>
+		<p>Eso mostrara una lista, deberas identificarlo basandote en las particiones o en el tamaño del disco. Buscas algo como /dev/sdb o /dev/sda
+		<p>Si no tienes el disco ya particionado para linux, es hora de trabajar, si ya lo tienes, felicitaciones. Ve <a>aquí</a></p>
+		<pre class="code-section"><code class="language-bash">cfdisk</code></pre>
+		<p>Necesitas 2 particiones, primero busca un "Free space" si no tienes deberas borrar alguna existente. Tienes que crear una particion de 500M y otra de lo que quieras (recomiendo 50G o mas)</p>
+		<br><br>
+		<h4>(3) "Formato" - Perfecto, ahora un breve momento de calma (previo a la tormenta nuevamente)</h4>
+		<p>Vamos a formatear las particiones que creaste, montarlas e iniciar nuestro sistema</p>
+		<p>Para que me entiendas mejor voy a asignarle nombres a tus particiones. $main= la particion de varios GB. $efi= la particion de 500MB</p>
+		<br>
+		<p>Puedes asegurarte de cual es cual usando el comando 'lsblk', las particiones seran las que comiencen con el nombre de tu disco y un N°</p>
+		<pre class="code-section"><code class="language-bash">mkfs.ext4 $main
+mkfs.fat -F 32 $efi
+# Ahora las montamos
+mount $main /mnt
+mkdir /mnt/boot
+mount $efi /mnt/boot
+# Instalamos paquetes vitales
+pacstrap /mnt base base-devel linux linux-firmware vim
+genfstab -U /mnt >> /mnt/etc/fstab
+# Iniciamos
+arch-chroot /mnt</code></pre>
+		<br><br>
+		<h4>(4) "GRUB" - Bueno, llegamos hasta acá, si haces todo bien practicamente puedes disfrutar de tu sistema</h4>
+		<p>Primero vamos a instalar unas cositas que vas a necesitar mas adelante (creeme)
+		<pre class="code-section"><code class="language-bash">pacman -S grub efibootmgr networkmanager</code></pre>
+		<p>Si todo lo anterior fue bien, los siguientes comandos no deberian causar problemas y estaria casi todo listo</p>
+		<pre class="code-section"><code class="language-bash">grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+grub-mkconfig -o /boot/grub/grub.cfg</code></pre>
+		<br><br>
+		<h4>(5) "Calma" - puf, solo configuremos unas cosas para que puedas iniciar sesión luego y listo</h4>
+		<pre class="code-section"><code class="language-bash">passwd #Esto para configurar la contraseña de administrador</code></pre>
+		<pre class="code-section"><code class="language-bash">useradd -m -G wheel -s /bin/bash tuusuario
+passwd tuusuario</code></pre>
+		<pre class="code-section"><code class="language-bash">visudo</code></pre>
+		<p>Debes descomentar la linea "# %wheel ALL=(ALL) ALL" (eliminar el "#")</p>
+		<p>Para cerrar el archivo presiona "esc", luego ":q" y enter</p>
+		<pre class="code-section"><code class="language-bash">systemctl enable NetworkManager
+exit
+umount -R /mnt
+exit # Suerte :)</code></pre>
+	</div>
+    <script src="/static/main.js"></script>
+		<script src="/static/prism.js"></script>
+</body>
+</html>
