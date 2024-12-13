@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arch Linux Mirrors map</title>
+    <title>Arch Linux mirrorsmap</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 		<style>
@@ -13,12 +13,29 @@
 					position: absolute; 
 					left: 0%;
 					top: 0%;
-					translate: 8% 10%;
+					translate: 4% 5%;
 					background-color: #ddd;
 					padding: 10px;
 					border: 1px solid black;
 					border-radius: .8rem;
 					z-index: 2;
+				}
+				#filters {
+					position: absolute;
+					right: 0%;
+					top: 0%;
+					translate: -4% 12%;
+					background-color: #ddd;
+					padding: 10px;
+					border: 1px solid black;
+					border-radius: .8rem;
+					z-index: 2;
+				}
+				#filters > button {
+					padding: 8px;
+					outline: none;
+					border-radius: 8px;
+					cursor: pointer;
 				}
 				#card {
 					position: absolute; 
@@ -40,16 +57,11 @@
 				}
 				@media (max-width: 750px){
 					#card {
-						width: 80%;
+						width: 100%;
 					}
 					#servers {
 						display: flex;
 						flex-direction: column;
-						justify-content: center;
-						align-items: center;
-					}
-					#servers > li {
-						max-width: 80%;
 					}
 				}
 				#servers {
@@ -61,7 +73,6 @@
 				}
 				#servers > li {
 					display: flex;
-					flex-direction: row;
 					justify-content: space-between;
 					padding: 3px 0px 3px 5px;
 				}
@@ -108,6 +119,12 @@
 			<p><i class="fa-solid fa-square" style="color: #CCB"></i> 1-3 Servers</p>
 			<p><i class="fa-solid fa-square" style="color: #FEE"></i> 0 Servers</p>
 		</div>
+		<div id="filters" style="display: block">
+			<button title="HTTP filter" id='http-btn' onclick="toggleHTTP()"><i class="fa-solid fa-lock-open"></i></button>
+			<button title="HTTPS filter" id='https-btn' onclick="toggleHTTPS()"><i class="fa-solid fa-lock"></i></button>
+			<button title="Rsync filter" id='rsync-btn' onclick="toggleRSYNC()"><i class="fa-solid fa-rotate"></i></button>
+			<!-- <button onclick="toggleTier()"><i class="fa-solid fa-bars"></i></button> -->
+		</div>
 		<div id="card" style="display: none">
 			<button id="close-btn" onclick="toggleCard()"><i class="fa-solid fa-times"></i></button>
 			<h2 id="country"></h2>
@@ -118,40 +135,85 @@
     <div id="map"></div>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
-			const serverCounts = {};
+			httpFilter = true
+			httpsFilter = true
+			rsyncFilter = true
+			tierFilter = null // todo
+			function toggleHTTP() {
+				httpFilter = !httpFilter
+				fetch_data()
+			}
+			function toggleHTTPS() {
+				httpsFilter = !httpsFilter
+				fetch_data()
+			}
+			function toggleRSYNC() {
+				rsyncFilter = !rsyncFilter
+				fetch_data()
+			}
+
+			let serverCounts = {};
 
 			// Load server JSON file
-			fetch('https://raw.githubusercontent.com/syltr1x/mirrorsmap/refs/heads/main/data.json')
-			.then(response => response.json())
-			.then(data => {
-				// Count servers in each country
-				data.urls.forEach(server => {
-					let country = server.country;
-					if (country === "United States") {
-						country = "United States of America"
-					}
-					let url = server.url.split(":")[1].slice(2)
-					let protocol = server.protocol
-					let score = Math.round(server.score) || 0
-					serverCounts[country] = serverCounts[country] || []
+			function fetch_data() {
+				serverCounts = {};
+				fetch('data.json')
+				.then(response => response.json())
+				.then(data => {
+					// Count servers in each country
+					data.urls.forEach(server => {
+						let shouldFilter = !(
+							(httpFilter && server.protocol === 'http') ||
+							(httpsFilter && server.protocol === 'https') ||
+							(rsyncFilter && server.protocol === 'rsync'))
 
-					let existingServer = serverCounts[country].find(s => s.url === url);
-					if (existingServer) {
-						existingServer.protocol.push(protocol) 
-					} else {
-						serverCounts[country].push({"url": url, "protocol": [protocol], "score": score});
-					}
-				});
-				loadGeoJSON();
-			})
-			.catch(error => console.error('Error al cargar el archivo JSON:', error));
+						let country = server.country === "United States"
+							? "United States of America"
+							: server.country;
+						let url = server.url.split(":")[1].slice(2)
 
-      // Load GeoJSON file
+						let existingServer = serverCounts[country]
+							? serverCounts[country].find(s => s.url === url)
+							: false;
+
+						if (existingServer) {shouldFilter = false};
+						if (shouldFilter) return;
+
+						let protocol = server.protocol
+						let score = Math.round(server.score) || 0
+						serverCounts[country] = serverCounts[country] || []
+
+						if (existingServer) {
+							existingServer.protocol.push(protocol) 
+						} else {
+							serverCounts[country].push({"url": url, "protocol": [protocol], "score": score});
+						}
+					});
+					let httpButton = document.querySelector('#http-btn')
+					let httpsButton = document.querySelector('#https-btn')
+					let rsyncButton = document.querySelector('#rsync-btn')
+					if (httpFilter) {httpButton.style.background = '#3e3'} else {httpButton.style.background = '#ddd'}
+					if (httpsFilter) {httpsButton.style.background = '#3e3'} else {httpsButton.style.background = '#ddd'}
+					if (rsyncFilter) {rsyncButton.style.background = '#3e3'} else {rsyncButton.style.background = '#ddd'}
+
+					loadGeoJSON();
+				})
+				.catch(error => console.error('Error al cargar el archivo JSON:', error));
+			}
+
+			let map;
+
 			function loadGeoJSON() {
+				if (map) {
+					map.remove();
+					map = null;
+				}
+
 				fetch('https://raw.githubusercontent.com/syltr1x/mirrorsmap/refs/heads/main/map.geojson')
 					.then(response => response.json())
 					.then(worldGeoJson => {
-						const map = L.map('map').setView([20, 0], 2); // Centrar el mapa
+						// Inicializa el mapa nuevamente
+						map = L.map('map').setView([20, 0], 2);
 
 						L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 							maxZoom: 19,
@@ -165,14 +227,17 @@
 									fillColor: getColor(count),
 									color: '#000',
 									weight: 1,
-									fillOpacity: 1
+									fillOpacity: 1,
 								};
 							},
-						onEachFeature: onEachFeature
+							onEachFeature: onEachFeature,
 						}).addTo(map);
 					})
 					.catch(error => console.error('Error al cargar el GeoJSON:', error));
 			}
+
+
+			fetch_data()
 			// Define color based in server's country
 			function getColor(count) {
 				return  count > 70 ? '#220' :
