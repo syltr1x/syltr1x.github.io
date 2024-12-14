@@ -7,8 +7,18 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 		<style>
-				* { margin: 0; padding: 0 }
-        #map { height: 100vh; z-index: 0; }
+				* {
+					margin: 0;
+					padding: 0;
+				}
+				body {
+					background: #111;
+				}
+        #map {
+					height: 100vh;
+					z-index: 0;
+					background: #111;
+				}
 				#info {
 					position: absolute; 
 					left: 0%;
@@ -120,9 +130,9 @@
 			<p><i class="fa-solid fa-square" style="color: #FEE"></i> 0 Servers</p>
 		</div>
 		<div id="filters" style="display: block">
-			<button title="HTTP filter" id='http-btn' onclick="toggleHTTP()"><i class="fa-solid fa-lock-open"></i></button>
-			<button title="HTTPS filter" id='https-btn' onclick="toggleHTTPS()"><i class="fa-solid fa-lock"></i></button>
-			<button title="Rsync filter" id='rsync-btn' onclick="toggleRSYNC()"><i class="fa-solid fa-rotate"></i></button>
+			<button title="HTTP filter (V)" id='http-btn' onclick="toggleHTTP()"><i class="fa-solid fa-lock-open"></i></button>
+			<button title="HTTPS filter (F)" id='https-btn' onclick="toggleHTTPS()"><i class="fa-solid fa-lock"></i></button>
+			<button title="Rsync filter (R)" id='rsync-btn' onclick="toggleRSYNC()"><i class="fa-solid fa-rotate"></i></button>
 			<!-- <button onclick="toggleTier()"><i class="fa-solid fa-bars"></i></button> -->
 		</div>
 		<div id="card" style="display: none">
@@ -135,6 +145,11 @@
     <div id="map"></div>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
+			addEventListener('keydown', (e) => {
+				if (e.keyCode == 86) {toggleHTTP()}
+				if (e.keyCode == 70) {toggleHTTPS()}
+				if (e.keyCode == 82) {toggleRSYNC()}
+			})
 			httpFilter = true
 			httpsFilter = true
 			rsyncFilter = true
@@ -157,7 +172,7 @@
 			// Load server JSON file
 			function fetch_data() {
 				serverCounts = {};
-				fetch('data.json')
+				fetch('https://raw.githubusercontent.com/syltr1x/mirrorsmap/refs/heads/main/data.json')
 				.then(response => response.json())
 				.then(data => {
 					// Count servers in each country
