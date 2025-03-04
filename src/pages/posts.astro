@@ -16,31 +16,31 @@ const posts: Posts[] = await getCollection("posts");
 ---
 
 <Layout title="Posts">
-	<header class="mt-6">
-		<nav>
-			<ul class="flex justify-center">
+	<header class="bg-[#3337] pt-5 sm:pt-6 fixed bottom-0 w-full z-100 sm:relative sm:top-0 sm:bottom-auto sm:bg-[#0000]">
+		<nav class="">
+			<ul class="flex items-center justify-center pb-4 sm:pb-0">
 				<li class="mx-2">
-					<a href="/" class="flex items-center gap-2 hover:bg-[#ccc8] dark:hover:bg-[#3338] rounded-[.5vw] px-3 py-2 duration-300">
-						<svg class="size-6" fill=currentColor xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>home-outline</title><path d="M12 5.69L17 10.19V18H15V12H9V18H7V10.19L12 5.69M12 3L2 12H5V20H11V14H13V20H19V12H22" /></svg>
-						Home
+					<a href="/" class="flex items-center gap-2 hover:bg-[#ccc8] dark:hover:bg-[#3338] rounded-xl sm:rounded-[.5vw] px-3 py-2 duration-300">
+						<svg class="size-9 sm:size-6" fill=currentColor xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.69L17 10.19V18H15V12H9V18H7V10.19L12 5.69M12 3L2 12H5V20H11V14H13V20H19V12H22" /></svg>
+						<p class="hidden sm:block">Home</p>
 					</a>
 				</li>
 				<li class="mx-2">
-					<a href="/about" class="flex items-center gap-2 hover:bg-[#ccc8] dark:hover:bg-[#3338] rounded-[.5vw] px-3 py-2 duration-300">
-						<svg class="size-6" fill=currentColor xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>account-outline</title><path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,6A2,2 0 0,0 10,8A2,2 0 0,0 12,10A2,2 0 0,0 14,8A2,2 0 0,0 12,6M12,13C14.67,13 20,14.33 20,17V20H4V17C4,14.33 9.33,13 12,13M12,14.9C9.03,14.9 5.9,16.36 5.9,17V18.1H18.1V17C18.1,16.36 14.97,14.9 12,14.9Z" /></svg>
-						About
+					<a href="/about" class="flex items-center gap-2 hover:bg-[#ccc8] dark:hover:bg-[#3338] rounded-xl sm:rounded-[.5vw] px-3 py-2 duration-300">
+						<svg class="size-9 sm:size-6" fill=currentColor xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,6A2,2 0 0,0 10,8A2,2 0 0,0 12,10A2,2 0 0,0 14,8A2,2 0 0,0 12,6M12,13C14.67,13 20,14.33 20,17V20H4V17C4,14.33 9.33,13 12,13M12,14.9C9.03,14.9 5.9,16.36 5.9,17V18.1H18.1V17C18.1,16.36 14.97,14.9 12,14.9Z" /></svg>
+						<p class="hidden sm:block">About</p>
 					</a>
 				</li>
 				<li class="mx-2">
-					<a href="/projects" class="flex items-center gap-2 hover:bg-[#ccc8] dark:hover:bg-[#3338] rounded-[.5vw] px-3 py-2 duration-300">
-						<svg class="size-6" fill=currentColor xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>briefcase-outline</title><path d="M20,6C20.58,6 21.05,6.2 21.42,6.59C21.8,7 22,7.45 22,8V19C22,19.55 21.8,20 21.42,20.41C21.05,20.8 20.58,21 20,21H4C3.42,21 2.95,20.8 2.58,20.41C2.2,20 2,19.55 2,19V8C2,7.45 2.2,7 2.58,6.59C2.95,6.2 3.42,6 4,6H8V4C8,3.42 8.2,2.95 8.58,2.58C8.95,2.2 9.42,2 10,2H14C14.58,2 15.05,2.2 15.42,2.58C15.8,2.95 16,3.42 16,4V6H20M4,8V19H20V8H4M14,6V4H10V6H14Z" /></svg>
-						Projects
+					<a href="/projects" class="flex items-center gap-2 hover:bg-[#ccc8] dark:hover:bg-[#3338] rounded-xl sm:rounded-[.5vw] px-3 py-2 duration-300">
+						<svg class="size-9 sm:size-6" fill=currentColor xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,6C20.58,6 21.05,6.2 21.42,6.59C21.8,7 22,7.45 22,8V19C22,19.55 21.8,20 21.42,20.41C21.05,20.8 20.58,21 20,21H4C3.42,21 2.95,20.8 2.58,20.41C2.2,20 2,19.55 2,19V8C2,7.45 2.2,7 2.58,6.59C2.95,6.2 3.42,6 4,6H8V4C8,3.42 8.2,2.95 8.58,2.58C8.95,2.2 9.42,2 10,2H14C14.58,2 15.05,2.2 15.42,2.58C15.8,2.95 16,3.42 16,4V6H20M4,8V19H20V8H4M14,6V4H10V6H14Z" /></svg>
+						<p class="hidden sm:block">Projects</p>
 					</a>
 				</li>
 				<li class="mx-2">
-					<a href="/posts" class="flex items-center gap-2 bg-[#ccc8] dark:bg-[#3338] rounded-[.5vw] px-3 py-2 border-1 border-[#6e0001]">
-						<svg class="h-6 w-6" fill=#6e0001 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>newspaper-variant-multiple</title><path d="M4 7V19H19V21H4C2 21 2 19 2 19V7H4M21.3 3H7.7C6.76 3 6 3.7 6 4.55V15.45C6 16.31 6.76 17 7.7 17H21.3C22.24 17 23 16.31 23 15.45V4.55C23 3.7 22.24 3 21.3 3M8 5H13V11H8V5M21 15H8V13H21V15M21 11H15V9H21V11M21 7H15V5H21V7Z" /></svg>
-						Posts
+					<a href="/posts" class="flex items-center gap-2 bg-[#ccc8] dark:bg-[#3338] rounded-xl sm:rounded-[.5vw] px-3 py-2 border-1 border-[#6e0001]">
+						<svg class="size-9 sm:size-6" fill=#6e0001 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 7V19H19V21H4C2 21 2 19 2 19V7H4M21.3 3H7.7C6.76 3 6 3.7 6 4.55V15.45C6 16.31 6.76 17 7.7 17H21.3C22.24 17 23 16.31 23 15.45V4.55C23 3.7 22.24 3 21.3 3M8 5H13V11H8V5M21 15H8V13H21V15M21 11H15V9H21V11M21 7H15V5H21V7Z" /></svg>
+						<p class="hidden sm:block">Posts</p>
 					</a>
 				</li>
 			</ul>

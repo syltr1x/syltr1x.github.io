@@ -17,31 +17,31 @@ const projects: Project[] = await getCollection("projects");
 ---
 
 <Layout title="Projects">
-	<header class="mt-6">
+	<header class="bg-[#3337] pt-5 sm:pt-6 fixed bottom-0 w-full z-100 sm:relative sm:top-0 sm:bottom-auto sm:bg-[#0000]">
 		<nav class="">
-			<ul class="flex justify-center">
+			<ul class="flex items-center justify-center pb-4 sm:pb-0">
 				<li class="mx-2">
-					<a href="/" class="flex items-center gap-2 hover:bg-[#ccc8] dark:hover:bg-[#3338] rounded-[.5vw] px-3 py-2 duration-300">
-						<svg class="size-6" fill=currentColor xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>home-outline</title><path d="M12 5.69L17 10.19V18H15V12H9V18H7V10.19L12 5.69M12 3L2 12H5V20H11V14H13V20H19V12H22" /></svg>
-						Home
+					<a href="/" class="flex items-center gap-2 hover:bg-[#ccc8] dark:hover:bg-[#3338] rounded-xl sm:rounded-[.5vw] px-3 py-2 duration-300">
+						<svg class="size-9 sm:size-6" fill=currentColor xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.69L17 10.19V18H15V12H9V18H7V10.19L12 5.69M12 3L2 12H5V20H11V14H13V20H19V12H22" /></svg>
+						<p class="hidden sm:block">Home</p>
 					</a>
 				</li>
 				<li class="mx-2">
-					<a href="/about" class="flex items-center gap-2 hover:bg-[#ccc8] dark:hover:bg-[#3338] rounded-[.5vw] px-3 py-2 duration-300">
-						<svg class="size-6" fill=currentColor xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>account-outline</title><path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,6A2,2 0 0,0 10,8A2,2 0 0,0 12,10A2,2 0 0,0 14,8A2,2 0 0,0 12,6M12,13C14.67,13 20,14.33 20,17V20H4V17C4,14.33 9.33,13 12,13M12,14.9C9.03,14.9 5.9,16.36 5.9,17V18.1H18.1V17C18.1,16.36 14.97,14.9 12,14.9Z" /></svg>
-						About
+					<a href="/about" class="flex items-center gap-2 hover:bg-[#ccc8] dark:hover:bg-[#3338] rounded-xl sm:rounded-[.5vw] px-3 py-2 duration-300">
+						<svg class="size-9 sm:size-6" fill=currentColor xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,6A2,2 0 0,0 10,8A2,2 0 0,0 12,10A2,2 0 0,0 14,8A2,2 0 0,0 12,6M12,13C14.67,13 20,14.33 20,17V20H4V17C4,14.33 9.33,13 12,13M12,14.9C9.03,14.9 5.9,16.36 5.9,17V18.1H18.1V17C18.1,16.36 14.97,14.9 12,14.9Z" /></svg>
+						<p class="hidden sm:block">About</p>
 					</a>
 				</li>
 				<li class="mx-2">
-					<a href="/projects" class="flex items-center gap-2 bg-[#ccc8] dark:bg-[#3338] rounded-[.5vw] px-3 py-2 border-1 border-[#6e0001]">
-						<svg class="size-6" fill=#6e0001 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>briefcase</title><path d="M10,2H14A2,2 0 0,1 16,4V6H20A2,2 0 0,1 22,8V19A2,2 0 0,1 20,21H4C2.89,21 2,20.1 2,19V8C2,6.89 2.89,6 4,6H8V4C8,2.89 8.89,2 10,2M14,6V4H10V6H14Z" /></svg>
-						Projects
+					<a href="/projects" class="flex items-center gap-2 bg-[#ccc8] dark:bg-[#3338] rounded-xl sm:rounded-[.5vw] px-3 py-2 border-1 border-[#6e0001]">
+						<svg class="size-9 sm:size-6" fill=#6e0001 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10,2H14A2,2 0 0,1 16,4V6H20A2,2 0 0,1 22,8V19A2,2 0 0,1 20,21H4C2.89,21 2,20.1 2,19V8C2,6.89 2.89,6 4,6H8V4C8,2.89 8.89,2 10,2M14,6V4H10V6H14Z" /></svg>
+						<p class="hidden sm:block">Projects</p>
 					</a>
 				</li>
 				<li class="mx-2">
-					<a href="/posts" class="flex items-center gap-2 hover:bg-[#ccc8] dark:hover:bg-[#3338] rounded-[.5vw] px-3 py-2 duration-300">
-						<svg class="size-6" fill=currentColor xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>newspaper-variant-multiple-outline</title><path d="M4 7V19H19V21H4C2 21 2 19 2 19V7H4M21 5V15H8V5H21M21.3 3H7.7C6.76 3 6 3.7 6 4.55V15.45C6 16.31 6.76 17 7.7 17H21.3C22.24 17 23 16.31 23 15.45V4.55C23 3.7 22.24 3 21.3 3M9 6H12V11H9V6M20 14H9V12H20V14M20 8H14V6H20V8M20 11H14V9H20V11Z" /></svg>
-						Posts
+					<a href="/posts" class="flex items-center gap-2 hover:bg-[#ccc8] dark:hover:bg-[#3338] rounded-xl sm:rounded-[.5vw] px-3 py-2 duration-300">
+						<svg class="size-9 sm:size-6" fill=currentColor xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 7V19H19V21H4C2 21 2 19 2 19V7H4M21 5V15H8V5H21M21.3 3H7.7C6.76 3 6 3.7 6 4.55V15.45C6 16.31 6.76 17 7.7 17H21.3C22.24 17 23 16.31 23 15.45V4.55C23 3.7 22.24 3 21.3 3M9 6H12V11H9V6M20 14H9V12H20V14M20 8H14V6H20V8M20 11H14V9H20V11Z" /></svg>
+						<p class="hidden sm:block">Posts</p>
 					</a>
 				</li>
 			</ul>
