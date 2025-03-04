@@ -33,7 +33,7 @@ import Layout from '../layouts/Layout.astro';
 			</ul>
 		</nav>
 	</header>
-	<div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
+	<div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-y-6">
 		<div class="py-2 px-3 m-4"> 
 			<img src="/cat.png" alt="syltr1x profile" class="rounded-full">
 			<h1 class="text-4xl">I'm syltr1x</h1>
@@ -41,7 +41,7 @@ import Layout from '../layouts/Layout.astro';
 			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus doloremque praesentium cum. Explicabo eum odio numquam ad quaerat debitis doloribus, illum beatae obcaecati fugit iusto dignissimos expedita, qui sed facere?</p>
 		</div>
 		<div class="h-144 relative py-2 px-3 gap-y-6 rounded-[1vw] m-4 overflow-hidden flex flex-col items-center justify-center border border-[#ddd] dark:border-[#222]">
-			<div class="absolute inset-0 z-10 bg-[#ddd8] dark:bg-[#222e] backdrop-blur-lg shadow-lg transition-opacity duration-300 hover:opacity-0">
+			<div class="card absolute inset-0 z-10 bg-[#ddd8] dark:bg-[#222e] backdrop-blur-lg shadow-lg transition-opacity duration-300 md:hover:opacity-0">
 				<p class="absolute inset-0 gap-4 flex items-center justify-center z-20 text-2xl font-bold">
 					<svg class="h-12 w-12" fill=currentColor xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2,5.27L3.28,4L20,20.72L18.73,22L15.65,18.92C14.5,19.3 13.28,19.5 12,19.5C7,19.5 2.73,16.39 1,12C1.69,10.24 2.79,8.69 4.19,7.46L2,5.27M12,9A3,3 0 0,1 15,12C15,12.35 14.94,12.69 14.83,13L11,9.17C11.31,9.06 11.65,9 12,9M12,4.5C17,4.5 21.27,7.61 23,12C22.18,14.08 20.79,15.88 19,17.19L17.58,15.76C18.94,14.82 20.06,13.54 20.82,12C19.17,8.64 15.76,6.5 12,6.5C10.91,6.5 9.84,6.68 8.84,7L7.3,5.47C8.74,4.85 10.33,4.5 12,4.5M3.18,12C4.83,15.36 8.24,17.5 12,17.5C12.69,17.5 13.37,17.43 14,17.29L11.72,15C10.29,14.85 9.15,13.71 9,12.28L5.6,8.87C4.61,9.72 3.78,10.78 3.18,12Z" /></svg>
 					Working on...
@@ -50,8 +50,8 @@ import Layout from '../layouts/Layout.astro';
 			<img src="/cat_surprised.webp" class="rounded-xl size-90">
 			<p class="text-2xl">This page (My portfolio)</p>
 		</div>
-		<div class="h-144 relative py-2 px-3 gap-y-6 rounded-[1vw] m-4 overflow-hidden flex flex-col items-center justify-center border border-[#ddd] dark:border-[#222]">
-			<div class="absolute inset-0 z-10 bg-[#ddd8] dark:bg-[#222e] backdrop-blur-lg shadow-lg transition-opacity duration-300 hover:opacity-0">
+		<div class="h-144 relative py-2 px-3 gap-y-6 rounded-[1vw] m-4 overflow-hidden flex flex-col items-center justify-center border border-[#ddd] dark:border-[#222] mb-5">
+			<div class="card absolute inset-0 z-10 bg-[#ddd8] dark:bg-[#222e] backdrop-blur-lg shadow-lg transition-opacity duration-300 md:hover:opacity-0">
 				<p class="absolute inset-0 gap-4 flex items-center justify-center z-20 text-2xl font-bold">
 					<svg class="h-12 w-12" fill=currentColor xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2,5.27L3.28,4L20,20.72L18.73,22L15.65,18.92C14.5,19.3 13.28,19.5 12,19.5C7,19.5 2.73,16.39 1,12C1.69,10.24 2.79,8.69 4.19,7.46L2,5.27M12,9A3,3 0 0,1 15,12C15,12.35 14.94,12.69 14.83,13L11,9.17C11.31,9.06 11.65,9 12,9M12,4.5C17,4.5 21.27,7.61 23,12C22.18,14.08 20.79,15.88 19,17.19L17.58,15.76C18.94,14.82 20.06,13.54 20.82,12C19.17,8.64 15.76,6.5 12,6.5C10.91,6.5 9.84,6.68 8.84,7L7.3,5.47C8.74,4.85 10.33,4.5 12,4.5M3.18,12C4.83,15.36 8.24,17.5 12,17.5C12.69,17.5 13.37,17.43 14,17.29L11.72,15C10.29,14.85 9.15,13.71 9,12.28L5.6,8.87C4.61,9.72 3.78,10.78 3.18,12Z" /></svg>
 					Writting this...
@@ -61,4 +61,34 @@ import Layout from '../layouts/Layout.astro';
 			<p class="text-2xl">Linux distros guide</p>
 		</div>
 	</div>
+	<script>
+		const cards = document.querySelectorAll(".card");
+
+function updateActiveCard() {
+		if (window.innerWidth > 640) {return 0}
+    let viewportCenter = window.innerHeight / 2;
+    let closestCard = null;
+    let minDistance = 180;
+
+    cards.forEach(card => {
+        let rect = card.getBoundingClientRect();
+        let cardCenter = rect.top + rect.height / 2;
+        let distance = Math.abs(viewportCenter - cardCenter);
+
+        if (distance < minDistance) {
+            minDistance = distance;
+            closestCard = card;
+        }
+    });
+
+	cards.forEach(card => card.classList.remove("opacity-0"));
+	if (closestCard) closestCard.classList.add("opacity-0");
+}
+
+// Llamamos a la función en cada evento de scroll
+window.addEventListener("scroll", updateActiveCard);
+
+// También la ejecutamos una vez al cargar la página
+updateActiveCard();
+</script>
 </Layout>
