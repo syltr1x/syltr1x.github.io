@@ -1,0 +1,104 @@
+---
+import Layout from '../layouts/Layout.astro';
+import map from '../assets/map.svg';
+// Languages
+import icons from '../assets/icons.json';
+---
+
+<Layout title="About">
+	<header class="mt-6">
+		<nav class="">
+			<ul class="flex justify-center">
+				<li class="mx-2">
+					<a href="/" class="flex items-center gap-2 hover:bg-[#ccc8] dark:hover:bg-[#3338] rounded-[.5vw] px-3 py-2 duration-300">
+						<svg class="size-6" fill=currentColor xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5.69L17 10.19V18H15V12H9V18H7V10.19L12 5.69M12 3L2 12H5V20H11V14H13V20H19V12H22" /></svg>
+						Home
+					</a>
+				</li>
+				<li class="mx-2">
+					<a href="/about" class="flex items-center gap-2 bg-[#ccc8] dark:bg-[#3338] rounded-[.5vw] px-3 py-2 border-1 border-[#6e0001]">
+						<svg class="size-6" fill=#6e0001 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" /></svg>
+						About
+					</a>
+				</li>
+				<li class="mx-2">
+					<a href="/projects" class="flex items-center gap-2 hover:bg-[#ccc8] dark:hover:bg-[#3338] rounded-[.5vw] px-3 py-2 duration-300">
+						<svg class="size-6" fill=currentColor xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M20,6C20.58,6 21.05,6.2 21.42,6.59C21.8,7 22,7.45 22,8V19C22,19.55 21.8,20 21.42,20.41C21.05,20.8 20.58,21 20,21H4C3.42,21 2.95,20.8 2.58,20.41C2.2,20 2,19.55 2,19V8C2,7.45 2.2,7 2.58,6.59C2.95,6.2 3.42,6 4,6H8V4C8,3.42 8.2,2.95 8.58,2.58C8.95,2.2 9.42,2 10,2H14C14.58,2 15.05,2.2 15.42,2.58C15.8,2.95 16,3.42 16,4V6H20M4,8V19H20V8H4M14,6V4H10V6H14Z" /></svg>
+						Projects
+					</a>
+				</li>
+				<li class="mx-2">
+					<a href="/posts" class="flex items-center gap-2 hover:bg-[#ccc8] dark:hover:bg-[#3338] rounded-[.5vw] px-3 py-2 duration-300">
+						<svg class="size-6" fill=currentColor xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7V19H19V21H4C2 21 2 19 2 19V7H4M21 5V15H8V5H21M21.3 3H7.7C6.76 3 6 3.7 6 4.55V15.45C6 16.31 6.76 17 7.7 17H21.3C22.24 17 23 16.31 23 15.45V4.55C23 3.7 22.24 3 21.3 3M9 6H12V11H9V6M20 14H9V12H20V14M20 8H14V6H20V8M20 11H14V9H20V11Z" /></svg>
+						Posts
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<div class="grid md:grid-cols-2 grid-cols-1">
+		<div class="m-4 mx-auto">
+			<h1>Born in: Santa Fe, Argentina</h1>
+			<img class="h-122 dark:drop-shadow-[0_0_1px_rgba(255,255,255,1)]" src={map.src} alt="Argentina map">
+		</div>
+		<div class="m-4">
+			<p class="text-4xl">Used Languages</p>
+			<ul class="grid grid-cols-4 gap-x-3">
+				<li class="flex flex-col items-center hover:text-[#6e0001] duration-300 border-1 border-[#0000] hover:border-[#6e0001] py-4 px-2 rounded-sm">
+					<svg class="size-12" fill=currentColor xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true"><path d={icons.rust} /></svg>	
+					<p>Rust</p>
+				</li>
+				<li class="flex flex-col items-center hover:text-[#6e0001] duration-300 border-1 border-[#0000] hover:border-[#6e0001] py-4 px-2 rounded-sm">
+					<svg class="size-12" fill=currentColor xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true"><path d={icons.javascript} /></svg>	
+					<p>Javascript</p>
+				</li>
+				<li class="flex flex-col items-center hover:text-[#6e0001] duration-300 border-1 border-[#0000] hover:border-[#6e0001] py-4 px-2 rounded-sm">
+					<svg class="size-12" fill=currentColor xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true"><path d={icons.typescript} /></svg>	
+					<p>Typescript</p>
+				</li>
+				<li class="flex flex-col items-center hover:text-[#6e0001] duration-300 border-1 border-[#0000] hover:border-[#6e0001] py-4 px-2 rounded-sm">
+					<svg class="size-12" fill=currentColor xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true"><path d={icons.bash} /></svg>	
+					<p>Bash</p>
+				</li>
+			</ul>
+			<p class="text-4xl mt-6">Frameworks</p>
+			<ul class="grid grid-cols-4 gap-x-3">
+				<li class="flex flex-col items-center hover:text-[#6e0001] duration-300 border-1 border-[#0000] hover:border-[#6e0001] py-4 px-2 rounded-sm">
+					<svg class="size-12" fill=currentColor xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true"><path d={icons.tauri} /></svg>	
+					<p>Tauri</p>
+				</li>
+				<li class="flex flex-col items-center hover:text-[#6e0001] duration-300 border-1 border-[#0000] hover:border-[#6e0001] py-4 px-2 rounded-sm">
+					<svg class="size-12" fill=currentColor xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true"><path d={icons.astro} /></svg>	
+					<p>Astro</p>
+				</li>
+				<li class="flex flex-col items-center hover:text-[#6e0001] duration-300 border-1 border-[#0000] hover:border-[#6e0001] py-4 px-2 rounded-sm">
+					<svg class="size-12" fill=currentColor xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true"><circle cx="64" cy="64" r="11.4"></circle><path d={icons.react} /></svg>
+					<p>React</p>
+				</li>
+			</ul>
+			<p class="text-4xl mt-6">Tools</p>
+			<ul class="grid grid-cols-4 gap-x-3">
+				<li class="flex flex-col items-center hover:text-[#6e0001] duration-300 border-1 border-[#0000] hover:border-[#6e0001] py-4 px-2 rounded-sm">
+					<svg class="size-12" fill=currentColor xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true"><path d={icons.neovim} /></svg>	
+					<p>Neovim</p>
+				</li>
+				<li class="flex flex-col items-center hover:text-[#6e0001] duration-300 border-1 border-[#0000] hover:border-[#6e0001] py-4 px-2 rounded-sm">
+					<svg class="size-12" fill=currentColor xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true"><path d={icons.git} /></svg>	
+					<p>Git</p>
+				</li>
+				<li class="flex flex-col items-center hover:text-[#6e0001] duration-300 border-1 border-[#0000] hover:border-[#6e0001] py-4 px-2 rounded-sm">
+					<svg class="size-12" fill=currentColor xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true"><path d={icons.linux} /></svg>	
+					<p>Linux</p>
+				</li>
+				<li class="flex flex-col items-center hover:text-[#6e0001] duration-300 border-1 border-[#0000] hover:border-[#6e0001] py-4 px-2 rounded-sm">
+					<svg class="size-12" fill=currentColor xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true"><path d={icons.apache} /></svg>	
+					<p>Apache</p>
+				</li>
+			</ul>
+			<button class="hidden m-auto mt-10 flex gap-2 bg-gray-200 hover:bg-gray-300 px-3 py-2 rounded-full">
+				<svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 3H4C2.89 3 2 3.89 2 5V19C2 20.11 2.89 21 4 21H20C21.11 21 22 20.11 22 19V5C22 3.89 21.11 3 20 3M5 7H10V13H5V7M19 17H5V15H19V17M19 13H12V11H19V13M19 9H12V7H19V9Z" /></svg>
+				Download CV
+			</button>
+		</div>
+	</div>
+</Layout>
