@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+const images = import.meta.glob("../images/*.webp", { eager: true, import: "default" });
 
 interface Posts {
 	slug: string;
@@ -50,6 +51,7 @@ const posts: Posts[] = await getCollection("posts");
       posts.map(post => {
         const { slug, data } = post;
 				const { title, description, date, tags } = data;
+			  const imageSrc = images[`../images/${slug}.webp`] || "/images/default.webp";
 
 				return (
 				<a href={`post/${slug}`}>
@@ -57,7 +59,7 @@ const posts: Posts[] = await getCollection("posts");
 							<div class="grid grid-rows-2">
 								<img 
 									class="rounded-xl row-span-2 max-w-full min-w-full md:max-w-70 md:min-w-70"
-									src={`/src/images/${slug}.webp`}
+									src={imageSrc.src}
 									alt={slug}
 								>
 								<p class="absolute bottom-0 right-0 my-1 mx-3 sm:mx-auto text-sm sm:text-md sm:relative">{date}</p>
