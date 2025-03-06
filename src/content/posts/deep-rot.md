@@ -1,15 +1,8 @@
 ---
 title: Deeprot App
-description: Informacion sobre mi ruta de aprendizaje usando react-native (midudev)
-img: ../../../public/favicon.svg
+description: Cuento lo que estuve viendo recientemente de React y React-Native
 date: 20/02/2025
 tags: ["React-Native", "Proyectos", "Noobie"]
 ---
-Esto es una prueba de **El mejor proyecto de React-Native** Creando solo conmigo
-```
-1| Y esto es codigo,
-2| sisi:
-3|   codigo ejecutoso
-4| nono:
-5|   end
-```
+<h1 class="text-xl mb-5">Una app para conocer React-Native y a la vez React, actualizare cuando tenga una forma final, pero ahora está un poco abandonada (04/03/2025)</h1>
+Seria bueno complementarla con una pagina usando Astro y React

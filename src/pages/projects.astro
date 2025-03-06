@@ -8,7 +8,6 @@ interface Project {
 		title: string,
 		description: string,
 		tags: string[],
-		img: string,
 		client: string,
 		url: string
 	}
@@ -51,7 +50,7 @@ const projects: Project[] = await getCollection("projects");
 			{
       projects.map(project => {
         const { slug, data } = project;
-				const { title, description, client, img, tags, url } = data;
+				const { title, description, client, tags, url } = data;
 
 				return (
 				<a href={`project/${slug}`}>

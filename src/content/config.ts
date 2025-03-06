@@ -4,7 +4,6 @@ const posts = defineCollection({
 	schema: z.object({
 		title: z.string(),
 		description: z.string(),
-		img: z.string(),
 		date: z.string(),
 		tags: z.array(z.string()),
 	})
@@ -14,7 +13,6 @@ const projects = defineCollection({
 	schema: z.object({
 		title: z.string(),
 		description: z.string(),
-		img: z.string(),
 		client: z.string(),
 		tags: z.array(z.string()),
 		url: z.string().url(),
