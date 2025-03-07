@@ -54,7 +54,7 @@ const posts: Posts[] = await getCollection("posts");
 			  const imageSrc = images[`../images/${slug}.webp`] || "/images/default.webp";
 
 				return (
-				<a href={`post/${slug}`}>
+				<a href={`/post/${slug}`}>
 						<div class="border-1 border-[#3332] p-1 rounded-xl flex flex-col sm:flex-row relative m-4">
 							<div class="grid grid-rows-2">
 								<img 
