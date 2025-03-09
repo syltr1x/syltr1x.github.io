@@ -1,6 +1,6 @@
 ---
 title: Autocad 2025
-description: Enlace de descarga para instalar y activar Autocad 2025
+description: Enlace de descarga para instalar y activar Autocad 2025 en Windows
 date: 23/03/2024
 tags: ["Crack", "Tutorial", "Autocad"]
 ---

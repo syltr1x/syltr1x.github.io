@@ -2,6 +2,7 @@
 * {
     font-family: system-ui, monospace;
     scrollbar-width: thin;
+		scroll-behavior: smooth;
 }
 pre {
 		margin: 1rem 0;
