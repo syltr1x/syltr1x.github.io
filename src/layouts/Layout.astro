@@ -1,6 +1,6 @@
 ---
 import '/src/styles/global.css' 
-const { title } = Astro.props;
+const { title, desc } = Astro.props;
 import { ClientRouter } from 'astro:transitions';
 ---
 <!doctype html>
@@ -9,7 +9,7 @@ import { ClientRouter } from 'astro:transitions';
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={desc}>
 		<title>{title} | Syltr1x</title>
 		<ClientRouter />
 	</head>
