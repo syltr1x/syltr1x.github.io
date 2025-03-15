@@ -16,6 +16,7 @@ const projects = defineCollection({
 		client: z.string(),
 		tags: z.array(z.string()),
 		url: z.string().url(),
+		url_repo: z.string().url(),
 	})
 })
 

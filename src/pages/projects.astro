@@ -13,6 +13,7 @@ interface Project {
 	}
 }
 const projects: Project[] = await getCollection("projects");
+const images = import.meta.glob("../images/*.webp", { eager: true, import: "default" });
 ---
 
 <Layout title="Projects" desc="Syltr1x portfolio projects page">
@@ -50,36 +51,42 @@ const projects: Project[] = await getCollection("projects");
 			{
       projects.map(project => {
         const { slug, data } = project;
-				const { title, description, client, tags, url } = data;
+				const { title, description, client, tags, url, url_repo } = data;
+			  const imageSrc = images[`../images/${slug}.webp`] || "/images/default.webp";
 
 				return (
-				<a href={`project/${slug}`}>
-					<div class="border-1 border-[#3332] p-1 rounded-xl flex flex-col sm:flex-row relative m-4">
-						<img 
-							class="rounded-xl sm:w-1/2 w-full lg:size-1/4" 
-							src="https://i.pinimg.com/736x/8f/c1/10/8fc110e862e0aba065d155ecefca2735.jpg"
-							alt=""
-						>
-						<div class="m-4 relative">
-							<div class="flex justify-between items-center mb-4">
-								<h1 class="text-4xl font-bold flex" transition:name="title-proj">
-									{title}
-								</h1>
-								<svg class="size-6" fill=currentColor xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><path d={icons.github}/></svg>
+						<div class="border-1 border-[#3332] p-1 rounded-xl flex flex-col sm:flex-row relative m-4">
+							<div class="grid grid-rows-2 gap-y-2 mb-0 sm:mb-7">
+								<img 
+									class="rounded-xl row-span-2 max-w-full min-w-full md:max-w-70 md:min-w-70"
+									src={imageSrc.src}
+									alt={`${slug} syltr1x post`}
+								>
 							</div>
-							<p class="sm:mb-6 mb-12">{description}</p>
-							<div class="absolute w-full bottom-0 flex justify-between mb-[-.5rem] flex-col sm:flex-row">
-								<p class="flex items-center gap-1" title="Cliente">
+							<div class="m-4">
+								<h1 class="mt-0 text-4xl font-bold mb-5">{title}</h1>
+							<div class="flex gap-2 mb-2">
+								<a class="flex flex-1 gap-x-2 border rounded-lg px-2 py-1 items-center hover:opacity-70" target="_blank" href={url_repo}>
+									<svg class="size-6" fill=currentColor xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><path d={icons.github}/></svg>
+										Source code
+								</a>
+								<a class="flex flex-1 gap-x-2 border rounded-lg px-2 py-1 items-center hover:opacity-70" target="_blank" href={url}>
+									<svg class="size-6" fill=currentColor xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><path d={icons.github}/></svg>
+										Try it
+								</a>
+							</div>
+								<p class="mb-12">{description}</p>
+							</div>
+						<div class="absolute bottom-2 sm:bottom-1 justify-between flex flex-col sm:flex-row w-full px-2 sm:items-center gap-y-1 sm:gap-y-0">
+							<p class="flex items-center" title="Cliente">
 									<svg class="size-5" fill=currentColor xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" /></svg>
-									{client}
-								</p>
-								<div title="Tecnologias">
+							{client}</p>
+								<div title="Tecnologias" class="items-center flex flex-row">
 									{tags.map((t) => <span class="text-center border-1 border-[#6e0001] text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:text-[#b82d00]">{t}</span>)}
 								</div>
-							</div>
+						</div>
 						</div>
 					</div>
-				</a>
 				)
       })
     }
