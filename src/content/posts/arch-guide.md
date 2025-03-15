@@ -1,6 +1,6 @@
 ---
 title: Instalación de Arch Linux
-description: Un "paso a paso" para instalar Arch Linux de forma manual y basica
+description: Un "paso a paso" para instalar Arch Linux de forma manual y basica, sin Desktop Enviroment ni Windows Manager
 date: 10/12/2024
 tags: ["Arch", "Tutorial", "Linux"]
 ---
@@ -94,7 +94,7 @@ umount -R /mnt
 reboot # Despues de esto desconecta el USB
 ```
 
-<div class="absolute right-4 top-20 flex fixed flex-col">
+<div class="absolute right-4 top-20 fixed flex-col hidden lg:flex">
 <p class="text-lg underline">Tabla de contenidos</p>
 <a class="opacity-70 hover:text-blue-400 duration-100" href="#instalacion">1. Creacion del medio de instalación</a>
 <a class="opacity-70 hover:text-blue-400 duration-100" href="#wifi">2. Conexión a internet</a>

@@ -2,7 +2,7 @@
 title: Spotify para Arch
 description: Tutorial para instalar spotify y configurarlo con spicetify en Arch-Linux
 date: 04/03/2024
-tags: ["Arch", "Tutorial", "Linux"]
+tags: ["Tutorial", "Spotify", "Arch"]
 ---
 <p class="mb-[-1rem] mt-5">Instala yay y luego lo usa para instalar spotify</p>
 
